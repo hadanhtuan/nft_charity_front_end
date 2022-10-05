@@ -14,7 +14,7 @@ const App = () => {
         <Route path="/admin" exact component={admin_home} />
       </Switch>
     </BrowserRouter>
-  );
+  );    
 };
 
 export default App;
