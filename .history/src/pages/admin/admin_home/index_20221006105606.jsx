@@ -4,7 +4,7 @@ import Sidebar from "../../../components/Sidebar/Sidebar";
 const index = () => {
   return (
     <div style={{ background: "#EFF3FD", height: "1016px" }}>
-      <Sidebar style={{ color: "#ccc" }} />
+      <Sidebar style={{ color: "blue" }} />
     </div>
   );
 };
