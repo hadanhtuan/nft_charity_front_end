@@ -2,24 +2,24 @@ import React from "react";
 import Navbar from "../../../components/Navbar/Navbar";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 import PrimarySearchAppBar from "../../../components/Appbar/appbar";
-import { Card, Typography } from "@mui/material";
+import { Box,Card, Typography } from "@mui/material";
 import BasicCard from "../../../components/Widget/Widget";
-const drawerWidth = 240;
-export default function index() {
+import useStyles from "./styles";
+
+export default function Index() {
+
+  const classes = useStyles();
+
+
   return (
     <div className="home" style={{ display: "flex" }}>
       <Sidebar />
-      <div
-        className="container"
-        style={{
-          width: `calc(100% - ${drawerWidth}px)`,
-          height: `100vh`,
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: "#EFF3FD",
-        }}
+      <Box
+        className={classes.sidebar}
+        
       >
         <PrimarySearchAppBar />
+
         <div className="content">
           <Typography paragraph>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
@@ -36,7 +36,7 @@ export default function index() {
           </div>
           {/* end 4 card nho widget */}
         </div>
-      </div>
+      </Box>
     </div>
   );
 }
