@@ -21,12 +21,6 @@ export default function Index() {
         <PrimarySearchAppBar />
 
         <div className="content">
-          <Typography paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-            consectetur ab ea exercitationem ullam minus. Adipisci animi vitae
-            voluptas facere aperiam dicta, eveniet ex nostrum enim ea eius
-            officiis magnam!
-          </Typography>
           {/* start 4 card nho widget */}
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <BasicCard type="Bitcoin"></BasicCard>
