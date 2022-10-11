@@ -1,0 +1,14 @@
+import { makeStyles } from "@mui/styles";
+
+export const useStyles = makeStyles((theme) => ({
+  card: {
+    height: `300px`,
+    width: `calc(100% - 90px)`,
+    backgroundColor: `red`,
+  },
+  card__header: {},
+  card__title: {
+    fontSize: `3 rem`,
+  },
+  card__result: {},
+}));
