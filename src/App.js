@@ -1,18 +1,15 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Home from "./pages/admin_home/home";
 
-import admin_home from "./pages/admin/admin_home/Admin_home";
-import auction from "./pages/admin/auction/index";
-
-const App = () => {
+function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Switch>
-        <Route path="/admin" exact component={admin_home} />
-        <Route path="/aution" exact component={auction} />
+        <Route path="/" exact component={Home} />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
-};
+}
 
 export default App;

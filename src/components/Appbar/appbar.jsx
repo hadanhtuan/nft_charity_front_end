@@ -1,41 +1,51 @@
 import * as React from "react";
-
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
+import MySearch from "../SearchBar/SearchBar";
 import Account from "../Account/Account";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import SearchBar from "../SearchBar/SearchBar";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
-import useStyles from "./styles";
+const drawerWidth = 240;
 
-export default function PrimarySearchAppBar() {
-  const classes = useStyles();
-
+export default function MyAppBar() {
   return (
-    <AppBar
-      position="static"
-      variant="outline"
-      color="inherit"
-      sx={{ bgcolor: `transparent` }}
+    <Box
+      sx={{
+        display: `flex`,
+        flexGrow: `1`,
+      }}
     >
-      <Toolbar>
-        <Typography variant="h6" noWrap component="div">
-          Dashboard
-        </Typography>
+      <AppBar
+        position="static"
+        sx={{
+          height: "50px",
+          display: `flex`,
+          backgroundColor: `transparent`,
+          color: `inherit`,
+        }}
+        elevation={0}
+      >
+        <Box
+          sx={{
+            height: `100%`,
+            display: `flex`,
+            flexDirection: `row`,
+            justifyContent: `space-between`,
+            alignItems: `center`,
+            padding: `0px 40px`,
+          }}
+        >
+          <Typography variant="h6">Dashboard</Typography>
 
-        <SearchBar className={classes.SearchBar}></SearchBar>
-
-        <Button sx={{ marginLeft: `auto` }} variant="outlined">
-          connect wallet
-        </Button>
-
-        <Typography sx={{ marginLeft: `10px` }}>Pham Quang Hoa</Typography>
-        <Account className={classes.accountAvatar} />
-      </Toolbar>
-    </AppBar>
+          <MySearch />
+          {/* the box to contain the right side of appbar */}
+          <Box sx={{ display: `flex` }}>
+            <Button color="inherit">Connect Wallet</Button>
+            <Account />
+          </Box>
+        </Box>
+      </AppBar>
+    </Box>
   );
 }

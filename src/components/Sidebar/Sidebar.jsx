@@ -1,43 +1,66 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
+import { Box, CssBaseline } from "@mui/material";
+import Drawer from "@mui/material/Drawer";
+import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-
+import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
-import Typography from "@mui/material/Typography";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
+
+import logo from "../../assets/litecoin.svg";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import CampaignIcon from "@mui/icons-material/Campaign";
 import CreateIcon from "@mui/icons-material/Create";
 import SettingsIcon from "@mui/icons-material/Settings";
-import logo from "../../assets/litecoin.svg";
 import bottomSideBar from "../../assets/bottomSidebarImage.svg";
+
 import useStyles from "./styles";
 
-export default function PermanentDrawerLeft() {
+const drawerWidth = 240;
+
+export default function MySidebar() {
   const classes = useStyles();
   return (
-    <Box className={classes.drawer}>
-      {/* reset css */}
+    <Box sx={{ display: `flex` }}>
       <CssBaseline />
-      {/*logo va  option  */}
-      <Box className={classes.drawer__top}>
+      <Drawer
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: drawerWidth,
+            boxSizing: "border-box",
+          },
+        }}
+        variant="permanent"
+        anchor="left"
+        elevation={4}
+      >
+        {/* this is a full box to contain any thing in sidebar */}
+
         {/* start phan header */}
-        <Box className={classes.drawer__header}>
-          <Box className={classes.drawer__logo}>
-            <img className={classes.logo__image} src={logo} />
-            <Typography className={classes.logo__title} ml={1}>
-              nft charity
-            </Typography>
+        <Box sx={{ display: `flex`, height: `100px`, margin: `0 auto` }}>
+          <Box
+            sx={{
+              display: `flex`,
+              justifyContent: `center`,
+              alignItems: `center`,
+            }}
+          >
+            <Box>
+              <img src={logo} />
+            </Box>
+            <Box>
+              <Typography ml={1}>NFT CHARITY</Typography>
+            </Box>
           </Box>
         </Box>
         {/* end phan header */}
         <Divider />
-
         {/* start phan option */}
         <List>
           {
@@ -91,12 +114,20 @@ export default function PermanentDrawerLeft() {
         </List>
         {/* end phan option */}
         <Divider />
-      </Box>
-      {/* end phan logo va option */}
-      {/* footer */}
-      <Box className={classes.drawer__bottom}>
-        <img className={classes.bottom__image} src={bottomSideBar} />
-      </Box>
+
+        {/* start phan footer */}
+        <Box
+          sx={{
+            display: `flex`,
+            flex: `1`,
+            alignItems: `flex-end`,
+            justifyContent: `center`,
+            paddingBottom: `10px`,
+          }}
+        >
+          <img className={classes.bottomSideBar} src={bottomSideBar} />
+        </Box>
+      </Drawer>
     </Box>
   );
 }

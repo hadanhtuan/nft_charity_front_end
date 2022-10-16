@@ -54,7 +54,7 @@ export default function Account() {
             flexDirection: `column`,
           }}
         >
-          <Button>alo</Button>
+          <Typography>Phạm Quang Hoà</Typography>
           <Button>123213213</Button>
         </Box>
       </Popover>

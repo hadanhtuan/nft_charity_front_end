@@ -1,31 +1,51 @@
 import * as React from "react";
-import { Card, Box } from "@mui/material";
-import addBtn from "../../assets/addBtn.svg";
+
+import { Card, Box, CssBaseline, Typography, Button } from "@mui/material";
+
 import cardbackground from "../../assets/cardbackground.svg";
-import { useStyles } from "./styles";
-export default function Balance() {
-  const classes = useStyles();
 
+export default function MyBalance() {
   return (
-    <Card className={classes.card}>
-      {/* start header */}
-      <Box className={classes.header}>
-        <p className={classes.title}>Balances</p>
-        <img className={classes.addBtn} src={addBtn} alt="addBtn" />
-      </Box>
-      {/* end header */}
+    <Card
+      sx={{
+        display: `flex`,
+        width: `218.7px`,
+        padding: `20px 20px 10px 20px`,
+        flexDirection: `column`,
+        justifyContent: `space-between`,
+      }}
+    >
+      <CssBaseline />
 
-      {/* start body  */}
-      <Box className={classes.body}>
-        <Box className={classes.bodyUnit}>
-          <span className={classes.dollar}>$</span>
-          <p className={classes.dollar_title}>Dollar</p>
+      {/* box_header */}
+      <Box
+        sx={{
+          display: `flex`,
+          flexDirection: `row`,
+          justifyContent: `space-between`,
+        }}
+      >
+        <Box>
+          <Typography variant="h6">Balance</Typography>
         </Box>
-        <p className={classes.bodyValue}>9784.79</p>
+        <Box>
+          <Button>add</Button>
+        </Box>
       </Box>
-      <Box className={classes.img}>
-        <img className={classes.cardbackground} src={cardbackground} alt="" />
+
+      {/*usd unit box */}
+      <Box sx={{ display: `flex` }}>
+        <Typography variant="subtitle2" sx={{ color: `#5A55D2` }}>
+          $
+        </Typography>
+        <Typography variant="subtitle2" sx={{ marginLeft: `4px` }}>
+          Dollar
+        </Typography>
       </Box>
+      <Typography variant="h5" sx={{ color: `#5A55D2` }}>
+        9784.79
+      </Typography>
+      <img src={cardbackground} alt="" />
     </Card>
   );
 }

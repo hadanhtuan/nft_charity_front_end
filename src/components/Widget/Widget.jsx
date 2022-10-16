@@ -1,25 +1,25 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
+import { Card, Box, CssBaseline, Typography } from "@mui/material";
+// import image icon
 import bitcoinSVG from "../../assets/bitcoin.svg";
 import ethereumSVG from "../../assets/ethereum.svg";
-import litecoinSVG from "../../assets/litecoin.svg";
 import binancecoinSVG from "../../assets/binancecoin.svg";
+import litecoinSVG from "../../assets/litecoin.svg";
 
-import transfer from "../../assets/data_transfer.svg";
+// import exchange icon
+import exchangeIcon from "../../assets/data_transfer.svg";
+
+// import value up icon
 import upGrowth from "../../assets/Up.svg";
-import upChart from "../../assets/Yes.svg";
 import downGrowth from "../../assets/No.svg";
+// import chart up icon
+import upChart from "../../assets/Yes.svg";
 import downChart from "../../assets/Down.svg";
-import { CssBaseline } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
 import useStyles from "./styles";
 
-export default function BasicCard({ type }) {
+export default function MyWidget({ type }) {
   let data;
   switch (type) {
     case "Bitcoin":
@@ -63,72 +63,62 @@ export default function BasicCard({ type }) {
       };
       break;
   }
-
   const classes = useStyles();
-
   return (
-    <Card>
+    <Card sx={{ display: `flex`, padding: `19px` }}>
       <CssBaseline />
-      <Grid container className={classes.widget}>
-        {/* ben trai */}
-        <Grid item container className={classes.widget_left} direction="column">
-          <Grid item>
-            <img className={classes.widget_icon} src={data.img} alt="anhcoin" />
-          </Grid>
-          <Grid item container direction="row">
-            <Typography variant="subtitle2" gutterBottom>
-              {data.coinTitle}
-            </Typography>
-            <img src={transfer} alt="data_transfer" />
-            <Typography variant="subtitle2" gutterBottom>
-              USD
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant="h5">{data.weirdNumber}</Typography>
-          </Grid>
-          <Grid item sx={{ display: "inline-flex", padding: `0` }}>
-            {data.isGrowth ? (
-              <>
-                <img src={upGrowth} alt="data_up" style={{ margin: `0 4px` }} />
-                <Typography sx={{ fontSize: `14px`, color: `#00DEA3` }}>
-                  {data.percentChange}%
-                </Typography>
-              </>
-            ) : (
-              <>
-                <img
-                  src={downGrowth}
-                  alt="data_up"
-                  style={{ margin: `0 4px` }}
-                />
-                <Typography sx={{ fontSize: `14px`, color: `#F23985` }}>
-                  {data.percentChange}%
-                </Typography>
-              </>
-            )}
-          </Grid>
-        </Grid>
+      {/* left side */}
+      <Box sx={{ display: `flex`, flexDirection: `column` }}>
+        <img className={classes.widget_icon} src={data.img} alt="anhcoin" />
 
-        {/* ben phai */}
-        <Grid
-          item
-          className={classes.widget_right}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-        >
+        {/* start this is a box to contain money transfer */}
+        <Box sx={{ display: `flex` }}>
+          <Typography variant="body1" sx={{ fontWeight: `500` }}>
+            {data.coinTitle}
+          </Typography>
+          <img src={exchangeIcon} alt="" />
+          <Typography variant="body1" sx={{ fontWeight: `500` }}>
+            USD
+          </Typography>
+        </Box>
+        {/* end money transfer */}
+
+        {/* money value */}
+        <Typography variant="h6" sx={{ fontWeight: `700` }}>
+          {data.weirdNumber}
+        </Typography>
+
+        {/* this is a box to contain value up or down */}
+        <Box sx={{ display: `flex`, flexDirection: `row` }}>
           {data.isGrowth ? (
             <>
-              <img src={upChart} alt="chart" />
+              <img src={upGrowth} alt="data_up" style={{ margin: `0 4px` }} />
+              <Typography sx={{ fontSize: `14px`, color: `#00DEA3` }}>
+                {data.percentChange}%
+              </Typography>
             </>
           ) : (
             <>
-              <img src={downChart} alt="chart" />
+              <img src={downGrowth} alt="data_up" style={{ margin: `0 4px` }} />
+              <Typography sx={{ fontSize: `14px`, color: `#F23985` }}>
+                {data.percentChange}%
+              </Typography>
             </>
           )}
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
+      {/* right side */}
+      <Box sx={{ display: `flex`, alignItems: `center` }}>
+        {data.isGrowth ? (
+          <>
+            <img src={upChart} alt="chart" />
+          </>
+        ) : (
+          <>
+            <img src={downChart} alt="chart" />
+          </>
+        )}
+      </Box>
     </Card>
   );
 }

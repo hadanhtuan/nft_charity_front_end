@@ -1,14 +1,8 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles";
 
 export default makeStyles((theme) => ({
-  widget: {
-    display: "flex",
-    padding: theme.spacing(2),
-  },
-  widget_left: {
-    flex: `1`,
-  },
   widget_icon: {
-    width: "40px",
+    width: `30px`,
+    marginBottom: `8px`,
   },
 }));
