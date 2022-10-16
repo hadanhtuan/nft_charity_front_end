@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Box, IconButton } from "@mui/material";
+import { Card, Box, Typography, IconButton } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
@@ -60,6 +60,15 @@ const columns = [
     },
   },
 ];
+
+function user({ dataX, dataY }) {
+  return (
+    <Box>
+      <Typography variant="body2">{dataX}</Typography>
+      <Typography variant="subtitle2">{dataY}</Typography>
+    </Box>
+  );
+}
 
 const rows = [
   {
