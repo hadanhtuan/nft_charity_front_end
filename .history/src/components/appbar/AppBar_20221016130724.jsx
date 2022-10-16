@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import MySearch from "../SearchBar/SearchBar";
-import Account from "../Account/Account";
+// import Account from "../Account/Account";
 
 const drawerWidth = 240;
 
@@ -14,7 +14,7 @@ export default function MyAppBar() {
     <AppBar
       position="static"
       sx={{
-        height: "50px",
+        height: "8px",
         display: `flex`,
         backgroundColor: `transparent`,
         color: `inherit`,
@@ -37,7 +37,7 @@ export default function MyAppBar() {
         {/* the box to contain the right side of appbar */}
         <Box sx={{ display: `flex` }}>
           <Button color="inherit">Connect Wallet</Button>
-          <Account />
+          {/* <Account /> */}
         </Box>
       </Box>
     </AppBar>

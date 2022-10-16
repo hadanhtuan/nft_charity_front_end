@@ -29,7 +29,9 @@ export default function Index() {
             md={12}
             sx={{
               display: `flex`,
+              height: `100`
               flexDirection: `column`,
+              justifyContent: `space-between`,
               padding: `20px 40px 15px 40px`,
             }}
           >

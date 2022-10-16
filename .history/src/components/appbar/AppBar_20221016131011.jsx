@@ -37,7 +37,7 @@ export default function MyAppBar() {
         {/* the box to contain the right side of appbar */}
         <Box sx={{ display: `flex` }}>
           <Button color="inherit">Connect Wallet</Button>
-          <Account />
+          {/* <Account /> */}
         </Box>
       </Box>
     </AppBar>

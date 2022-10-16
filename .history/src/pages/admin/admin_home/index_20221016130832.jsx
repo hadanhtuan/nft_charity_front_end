@@ -30,6 +30,7 @@ export default function Index() {
             sx={{
               display: `flex`,
               flexDirection: `column`,
+              
               padding: `20px 40px 15px 40px`,
             }}
           >

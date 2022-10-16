@@ -30,7 +30,9 @@ export default function Index() {
             sx={{
               display: `flex`,
               flexDirection: `column`,
+              justifyContent: `space-between`,
               padding: `20px 40px 15px 40px`,
+              
             }}
           >
             {/* widget box */}
