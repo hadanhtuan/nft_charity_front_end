@@ -1,0 +1,32 @@
+.box
+{
+  display: flex;
+
+  .bottomSideBar
+  {
+    width: 80%;
+  }
+
+  .header
+  {
+    display: flex;
+    height: 100px;
+    margin: 0 auto;
+
+    .logoTitle
+    {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .footer{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: flex-end;
+ 
+  }
+
+}

@@ -1,0 +1,10 @@
+$assetPath : "../assets";
+
+.container
+{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+
+    background: url("../../../assets/back.svg") no-repeat center center fixed;
+}

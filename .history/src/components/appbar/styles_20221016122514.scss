@@ -1,0 +1,21 @@
+.box
+{
+    display: flex;
+    flex-grow: 1;
+
+    .appbar
+    {
+        height: "50px";
+        display: flex;
+        background-color: transparent;
+        color: inherit;
+        .box{
+            height: 100%;
+            display: flex;
+            flexirection: row;
+            justifyContent: space-between;
+            alignItems: center;
+            padding: 0px 40px;
+        }
+    }
+}

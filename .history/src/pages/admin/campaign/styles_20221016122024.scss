@@ -1,0 +1,16 @@
+$assetPath : "../assets";
+
+.container
+{
+    display: flex;
+    background-color: #7487b7;
+    background-image: url("../../../assets/back.svg");
+
+    .page
+    {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+}

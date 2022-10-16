@@ -1,0 +1,12 @@
+$assetPath : "../assets";
+
+.container
+{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+
+    background: url("../../../assets/back.j") no-repeat center center fixed;
+    background-size: cover;
+
+}

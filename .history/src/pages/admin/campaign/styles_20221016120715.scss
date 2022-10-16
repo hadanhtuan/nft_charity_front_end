@@ -1,0 +1,9 @@
+$assetPath : "../assets";
+
+.container
+{
+    display: flex;
+    flex: 1; justify-content: center;
+    background-color: "#EFF3F6";
+    background: url("../../../assets/back.svg");
+}
