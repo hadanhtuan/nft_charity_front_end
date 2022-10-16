@@ -12,7 +12,7 @@ function App() {
         <Route path="/admin" exact component={admin_home} />
         <Route path="/admin/campaign" exact component={campaign} />
         <Route path="/admin/auction" exact component={auction} />
-        <Route path="/admin/list_nft" exact component={list_nft} />
+        
       </Switch>
     </Router>
   );
