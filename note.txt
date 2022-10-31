@@ -1,0 +1,1 @@
+There's no .toString('base64') in JavaScript, that exists in Node.js Buffers, so you're just calling .toString on an Object, which will indeed output: [Object Object] which is what you're getting.

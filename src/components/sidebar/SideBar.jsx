@@ -16,10 +16,19 @@ import CampaignIcon from "@mui/icons-material/Campaign";
 import CreateIcon from "@mui/icons-material/Create";
 import SettingsIcon from "@mui/icons-material/Settings";
 import bottomSideBar from "../../assets/bottomSidebarImage.svg";
-
+import { useHistory, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 const drawerWidth = 240;
 
 export default function MySidebar() {
+  const history = useHistory()
+  const location = useLocation();
+  const pathname = location.pathname.split('/')[2]
+  console.log(pathname)
+
+  const backLink = {backgroundColor: 'rgb(0, 221, 162)', color: 'white', "&:hover": {
+    backgroundColor: 'rgb(7, 177, 77, 0.42)'
+  }}
   return (
     <Box sx={{ display: `flex` }}>
       <CssBaseline />
@@ -62,7 +71,7 @@ export default function MySidebar() {
           {
             <React.Fragment>
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={()=>{history.push('/admin')}} sx={pathname == undefined ? backLink : {}}>
                   <ListItemIcon>
                     <InboxIcon />
                   </ListItemIcon>
@@ -71,7 +80,7 @@ export default function MySidebar() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={()=>{history.push('/admin/list_nft')}} sx={pathname == 'list_nft' ? backLink : {}}>
                   <ListItemIcon>
                     <FormatListBulletedIcon />
                   </ListItemIcon>
@@ -80,7 +89,7 @@ export default function MySidebar() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={()=>{history.push('/admin/campaign')}} sx={pathname == 'campaign' ? backLink : {}}>
                   <ListItemIcon>
                     <CampaignIcon />
                   </ListItemIcon>
@@ -89,7 +98,7 @@ export default function MySidebar() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={()=>{history.push('/admin/auction')}} sx={pathname == 'auction' ? backLink : {}}>
                   <ListItemIcon>
                     <CreateIcon />
                   </ListItemIcon>
