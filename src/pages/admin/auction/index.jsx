@@ -8,7 +8,7 @@ import MySearch from "../../../components/SearchBar/SearchBar";
 import TuneIcon from "@mui/icons-material/Tune";
 
 import MyTableCampaign from "../../../components/TableCampaign/TableCampaign";
-import MyFiltering from "../../../components/Filtering/Filtering";
+import MyFiltering from "../../../components/FormCampaign/Form";
 
 import "./styles.scss";
 export default function Index() {

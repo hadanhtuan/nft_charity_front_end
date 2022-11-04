@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, CssBaseline, Typography, Button } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
@@ -8,10 +8,20 @@ import MySearch from "../../../components/SearchBar/SearchBar";
 import TuneIcon from "@mui/icons-material/Tune";
 
 import MyTableCampaign from "../../../components/TableCampaign/TableCampaign";
-import MyFiltering from "../../../components/Filtering/Filtering";
-
+import FormCampaign from "../../../components/FormCampaign/Form";
+import {getCamp} from '../../../actions/campaign'
+import { useDispatch, useSelector } from "react-redux";
 import "./styles.scss";
+
+
 export default function Index() {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getCamp());  // req lấy campaigns từ api và lưu vào store
+  });
+
   return (
     // trang tong quat
     <Box className="container">
@@ -60,7 +70,7 @@ export default function Index() {
                   <MyTableCampaign />
                 </Grid>
                 <Grid item md>
-                  <MyFiltering />
+                  <FormCampaign/>
                 </Grid>
               </Grid>
             </Box>

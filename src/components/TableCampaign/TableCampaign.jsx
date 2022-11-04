@@ -1,176 +1,113 @@
-import React from "react";
-import { Card, Box, IconButton } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import {
+  Card,
+  Box,
+  IconButton,
+  Typography,
+  CircularProgress,
+} from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-
-function icon() {
-  return (
-    <Box sx={{ display: `flex`, gap: `10px` }}>
-      <IconButton aria-label="edit" component="label">
-        <EditIcon />
-      </IconButton>
-      <IconButton aria-label="delete" component="label">
-        <DeleteOutlinedIcon />
-      </IconButton>
-    </Box>
-  );
-}
-const columns = [
-  {
-    field: "avatar",
-    headerName: "",
-    renderCell: () => {
-      return <AccountCircleIcon />;
-    },
-    width: 30,
-  },
-  {
-    field: "user",
-    headerName: "User",
-    editable: true,
-    width: 200,
-  },
-  {
-    field: "totalRides",
-    headerName: "Total Rides",
-    type: "number",
-    editable: true,
-  },
-  {
-    field: "totalFinished",
-    headerName: "Total Finished",
-    type: "number",
-    editable: true,
-  },
-  {
-    field: "homeLocation",
-    headerName: "Home Location",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    editable: true,
-    width: 150,
-  },
-  {
-    field: "icon",
-    headerName: "Icon",
-    renderCell: () => {
-      return icon();
-    },
-  },
-];
-
-const rows = [
-  {
-    id: 1,
-    user: "Nguyen Van A",
-    totalRides: 10,
-    totalFinished: 5,
-    homeLocation: "Hanoi",
-    avatar: <AccountCircleIcon />,
-  },
-  {
-    id: 2,
-    user: "Nguyen Van B",
-    phone: "0123456789",
-    totalRides: 11,
-    totalFinished: 6,
-    homeLocation: "Hanoi",
-    avatar: <AccountCircleIcon />,
-  },
-  {
-    id: 3,
-
-    user: "Nguyen Van C",
-    phone: "0123456789",
-    totalRides: 12,
-    totalFinished: 7,
-    homeLocation: "Hanoi",
-    avatar: <AccountCircleIcon />,
-  },
-  {
-    id: 4,
-    user: "Nguyen Van D",
-    phone: "0123456789",
-    totalRides: 13,
-    totalFinished: 8,
-    homeLocation: "Hanoi",
-    avatar: <AccountCircleIcon />,
-  },
-  {
-    id: 5,
-
-    user: "Nguyen Van E",
-    phone: "0123456789",
-    totalRides: 14,
-    totalFinished: 9,
-    homeLocation: "Hanoi",
-    avatar: <AccountCircleIcon />,
-  },
-  {
-    id: 6,
-
-    user: "Nguyen Van F",
-    phone: "0123456789",
-    totalRides: 15,
-    totalFinished: 10,
-    homeLocation: "Hanoi",
-    avatar: <AccountCircleIcon />,
-  },
-  {
-    id: 7,
-
-    user: "Nguyen Van G",
-    phone: "0123456789",
-    totalRides: 16,
-    totalFinished: 11,
-    homeLocation: "Hanoi",
-    avatar: <AccountCircleIcon />,
-  },
-  {
-    id: 8,
-
-    user: "Nguyen Van H",
-    phone: "0123456789",
-    totalRides: 17,
-    totalFinished: 12,
-    homeLocation: "Hanoi",
-    avatar: <AccountCircleIcon />,
-  },
-  {
-    id: 9,
-
-    user: "Nguyen Van I",
-    phone: "0123456789",
-    totalRides: 18,
-    totalFinished: 13,
-    homeLocation: "Hanoi",
-    avatar: <AccountCircleIcon />,
-  },
-  {
-    id: 10,
-    user: "Nguyen Van J",
-    phone: "0123456789",
-    totalRides: 19,
-    totalFinished: 14,
-    homeLocation: "Hanoi",
-    avatar: <AccountCircleIcon />,
-  },
-  {
-    id: 11,
-
-    user: "Nguyen Van K",
-    phone: "0123456789",
-    totalRides: 20,
-    totalFinished: 15,
-    homeLocation: "Hanoi",
-    avatar: <AccountCircleIcon />,
-  },
-];
+import * as api from "../../apis";
+import { useDispatch, useSelector } from "react-redux";
+import { EDIT_CAMP, PICK_CAMP } from "../../constraint/actionTypes";
 
 export default function MyTableCampaign() {
-  return (
+  const { campaigns, isLoading } = useSelector((state) => state.campaign); //lay campaigns tu store
+
+  const dispatch = useDispatch();
+
+  const columns = [
+    {
+      field: "id",
+      headerName: "ID",
+      editable: true,
+      width: 10,
+    },
+    {
+      field: "title",
+      headerName: "Campaign",
+      editable: true,
+      width: 200,
+    },
+    {
+      field: "desc",
+      headerName: "Description",
+      editable: true,
+      width: 100,
+    },
+    {
+      field: "img1_url",
+      headerName: "Image",
+      width: 150,
+      renderCell: (params) => {
+        return (
+          <img
+            style={{
+              width: "150px",
+              height: "150px",
+              margin: "3px",
+            }}
+            src={params.row.img1_url}
+            alt=""
+          />
+        );
+      },
+    },
+    // {
+    //   field: "img2_url",
+    //   headerName: "Image",
+    //   width: 200,
+    //   renderCell: (params) => {
+    //     return (
+    //       <img
+    //         style={{
+    //           width: "150px",
+    //           height: "150px",
+    //           margin: "3px",
+    //           objectFit: "cover"
+    //         }}
+    //         src={params.row.img2_url}
+    //         alt=""
+    //       />
+    //     );
+    //   },
+    // },
+    {
+      field: "zone",
+      headerName: "Zone",
+      editable: true,
+      width: 100,
+    },
+    {
+      field: "icon",
+      headerName: "Icon",
+      renderCell: (params) => {
+        return (
+          <Box sx={{ display: `flex`, gap: `10px` }}>
+            <IconButton
+              aria-label="edit"
+              component="label"
+              onClick={() => {
+                dispatch({ type: PICK_CAMP, payload: params.row.id });
+              }}
+            >
+              <EditIcon />
+            </IconButton>
+            <IconButton aria-label="delete" component="label">
+              <DeleteOutlinedIcon />
+            </IconButton>
+          </Box>
+        ); 
+      },
+    },
+  ];
+
+  return isLoading ? (
+    <CircularProgress />
+  ) : (
     <Card
       sx={{
         padding: `20px`,
@@ -182,7 +119,8 @@ export default function MyTableCampaign() {
       {/* Header */}
       <DataGrid
         columns={columns}
-        rows={rows}
+        rows={campaigns}
+        rowHeight={150}
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection

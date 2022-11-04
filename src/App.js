@@ -41,8 +41,8 @@ function App() {
     );
     const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer);
 
-    console.log("ntf contract: ", nft);
-    console.log("marketplace contract: ", marketplace);
+    // console.log("ntf contract: ", nft);
+    // console.log("marketplace contract: ", marketplace);
     dispatch({
       type: FETCH_SOLIDITY,
       payload: {
