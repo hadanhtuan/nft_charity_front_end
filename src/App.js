@@ -11,14 +11,14 @@ import MarketplaceAddress from "./utils/contractsData/Marketplace-address.json";
 import NFTAbi from "./utils/contractsData/NFT.json";
 import NFTAddress from "./utils/contractsData/NFT-address.json";
 import { useDispatch, useSelector } from "react-redux";
-import { FETCH_SOLIDITY } from "./constraint/actionTypes";
-
+import { CONNECT_ACC, FETCH_SOLIDITY } from "./constraint/actionTypes";
+import {fetchSolidity} from './actions/solidity'
 function App() {
 
   const dispatch = useDispatch();
-  
-  const web3Handler = async () => {
-    const accounts = await window.ethereum.request({
+  let accounts
+  const web3Handler = async () => { // connect metamask
+    accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
     // Get provider from Metamask
@@ -33,29 +33,18 @@ function App() {
     window.ethereum.on("accountsChanged", async function (accounts) {
       await web3Handler();
     });
-
-    const marketplace = new ethers.Contract(
-      MarketplaceAddress.address,
-      MarketplaceAbi.abi,
-      signer
-    );
-    const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer);
-
-    // console.log("ntf contract: ", nft);
-    // console.log("marketplace contract: ", marketplace);
     dispatch({
-      type: FETCH_SOLIDITY,
+      type: CONNECT_ACC,
       payload: {
-        account: accounts[0],
-        nftContract: nft,
-        marketplaceContract: marketplace,
+        account: accounts[0]
       },
     });
   };
 
   useEffect(() => {
     web3Handler();
-  }, []);
+    dispatch(fetchSolidity())
+  });
   return (
     <Router>
       <Switch>

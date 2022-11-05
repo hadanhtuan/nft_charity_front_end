@@ -1,7 +1,7 @@
 import {
   FETCH_CAMP,
   EDIT_CAMP,
-  START_LOADING,
+  START_LOADING_CAMPAIGN,
   PICK_CAMP,
   CREATE_CAMP,
 } from "../constraint/actionTypes";
@@ -14,7 +14,7 @@ const initState = {
 
 export default (state = initState, action) => {
   switch (action.type) {
-    case START_LOADING: {
+    case START_LOADING_CAMPAIGN: {
       return { ...state, isLoading: true };
     }
     case FETCH_CAMP:

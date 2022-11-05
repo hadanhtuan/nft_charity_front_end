@@ -1,10 +1,10 @@
 import * as api from "../apis";
 
-import {FETCH_CAMP, EDIT_CAMP, START_LOADING, CREATE_CAMP} from '../constraint/actionTypes'
+import {FETCH_CAMP, EDIT_CAMP, START_LOADING_CAMPAIGN, CREATE_CAMP} from '../constraint/actionTypes'
 
 export const getCamp = () => async (dispatch) => {
   try {
-    dispatch({ type: START_LOADING });
+    dispatch({ type: START_LOADING_CAMPAIGN });
 
     const { data } = await api.getCamp();
     dispatch({
@@ -18,7 +18,7 @@ export const getCamp = () => async (dispatch) => {
 
 export const createCamp = (newCamp) => async (dispatch) => {
   try {
-    dispatch({ type: START_LOADING });
+    dispatch({ type: START_LOADING_CAMPAIGN });
 
     const { data } = await api.createCamp(newCamp);
     console.log(data)
@@ -33,7 +33,7 @@ export const createCamp = (newCamp) => async (dispatch) => {
 
 export const editCamp = (camp, id) => async (dispatch) => {
   try {
-    dispatch({ type: START_LOADING });
+    dispatch({ type: START_LOADING_CAMPAIGN });
 
     const { data } = await api.editCamp(camp, id);
     console.log(data)

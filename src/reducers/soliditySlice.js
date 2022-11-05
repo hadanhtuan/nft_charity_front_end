@@ -1,9 +1,7 @@
 import {
   FETCH_SOLIDITY,
-  START_LOADING,
-  END_LOADING,
+  START_LOADING_SOLIDITY,
   CONNECT_ACC,
-  FETCH_NFT
 } from "../constraint/actionTypes";
 
 const initState = {
@@ -16,27 +14,23 @@ const initState = {
 
 export default (state = initState, action) => {
   switch (action.type) {
-    case START_LOADING: {
+    case START_LOADING_SOLIDITY: {
       return { ...state, isLoading: true };
     }
     case FETCH_SOLIDITY:
       return {
         ...state,
-        account: action.payload.account,
         nftContract: action.payload.nftContract,
         marketplaceContract: action.payload.marketplaceContract,
-        isLoading: true
+        nftList: action.payload.nftList,
+        isLoading: false
       };
     case CONNECT_ACC:
       return {
         ...state,
         account: action.payload.account,
       };
-    case FETCH_NFT:
-      return {
-        ...state,
-        nftList: action.payload,
-      };
+      
 
     default:
       return state;
