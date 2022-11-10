@@ -1,0 +1,25 @@
+.box {
+  display: flex;
+}
+.box .header {
+  background-color: bisque;
+  display: flex;
+  height: 100px;
+  margin: 0 auto;
+}
+.box .header .logoTitle {
+  background-color: bisque;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box .footer {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10px;
+}
+.box .footer .bottomSideBar {
+  width: 80%;
+}/*# sourceMappingURL=styles_20221016123253.css.map */

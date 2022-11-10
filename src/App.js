@@ -6,6 +6,7 @@ import auction from "./pages/admin/auction";
 import list_nft from "./pages/admin/list_nft";
 
 import { ethers } from "ethers";
+import Web3 from 'web3';
 import MarketplaceAbi from "./utils/contractsData/Marketplace.json";
 import MarketplaceAddress from "./utils/contractsData/Marketplace-address.json";
 import NFTAbi from "./utils/contractsData/NFT.json";
@@ -13,6 +14,7 @@ import NFTAddress from "./utils/contractsData/NFT-address.json";
 import { useDispatch, useSelector } from "react-redux";
 import { CONNECT_ACC, FETCH_SOLIDITY } from "./constraint/actionTypes";
 import {fetchSolidity} from './actions/solidity'
+
 function App() {
 
   const dispatch = useDispatch();
@@ -23,6 +25,7 @@ function App() {
     });
     // Get provider from Metamask
     const provider = new ethers.providers.Web3Provider(window.ethereum);
+
     // Set signer
     const signer = provider.getSigner();
 

@@ -1,0 +1,7 @@
+.container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  background-color: #ccc;
+  background: url("../../../assets/back.svg");
+}/*# sourceMappingURL=styles_20221016120808.css.map */

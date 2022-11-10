@@ -44,6 +44,7 @@ export default function MyAppBar({ type }) {
   }
   const dispatch = useDispatch()
   const account = useSelector((state) => state.solidity.account)
+  console.log(account)
 
   const web3Handler = async () => {
     const accounts = await window.ethereum.request({
@@ -69,8 +70,8 @@ export default function MyAppBar({ type }) {
     );
     const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer);
 
-    console.log("ntf contract: ", nft);
-    console.log("marketplace contract: ", marketplace);
+    // console.log("ntf contract: ", nft);
+    // console.log("marketplace contract: ", marketplace);
     dispatch({
       type: FETCH_SOLIDITY,
       payload: {

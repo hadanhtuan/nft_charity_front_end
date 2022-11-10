@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  background-color: #EFF3FD;
+  background-image: url("../../../assets/back.svg");
+  background-size: cover;
+}/*# sourceMappingURL=styles_20221016121053.css.map */

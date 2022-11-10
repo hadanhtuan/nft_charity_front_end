@@ -1,0 +1,24 @@
+.box {
+  display: flex;
+  width: 240;
+}
+.box .header {
+  display: flex;
+  height: 100px;
+  margin: 0 auto;
+}
+.box .header .logoTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box .footer {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10px;
+}
+.box .footer .bottomSideBar {
+  width: 80%;
+}/*# sourceMappingURL=styles_20221016122705.css.map */

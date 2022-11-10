@@ -1,40 +1,8 @@
 import React from "react";
 
 import { Card, Box, Typography } from "@mui/material";
-import accountIcon from "../../assets/name.svg";
 
-function row({ type }) {
-  let data;
-  switch (type) {
-    case "Full Name":
-      data = "farhod dadajonov";
-      break;
-    case "Father Name":
-      data = "Ro’ziboyev";
-      break;
-    case "Birth Date":
-      data = "12.12.1999";
-      break;
-    case "Phone Number":
-      data = "+998 99 999 99 99";
-      break;
-    default:
-      break;
-  }
 
-  return (
-    <Box display="flex">
-      <Box flex={1}>
-        <Typography variant="title2" sx={{ fontWeight: `700` }}>
-          {type}
-        </Typography>
-      </Box>
-      <Box flex={1}>
-        <Typography variant="title2">{data}</Typography>
-      </Box>
-    </Box>
-  );
-}
 
 function toBase64(arr) {
   //arr = new Uint8Array(arr) if it's an ArrayBuffer
@@ -79,7 +47,7 @@ export default function MyNFTInfo({ image, name, description, price }) {
               <Typography variant="title2">{description}</Typography>
             </Box>
           </Box>
-          <Box display="flex">
+          {/* <Box display="flex">
             <Box flex={1}>
               <Typography variant="title2" sx={{ fontWeight: `700` }}>
                 Price
@@ -88,7 +56,7 @@ export default function MyNFTInfo({ image, name, description, price }) {
             <Box flex={1}>
               <Typography variant="title2">{price}</Typography>
             </Box>
-          </Box>
+          </Box> */}
         </Box>
       </Box>
     </Card>

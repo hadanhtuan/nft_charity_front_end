@@ -1,0 +1,6 @@
+.container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  background: url("../../../assets/back.svg") no-repeat center center fixed;
+}/*# sourceMappingURL=styles_20221016120837.css.map */

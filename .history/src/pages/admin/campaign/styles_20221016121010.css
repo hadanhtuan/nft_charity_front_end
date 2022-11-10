@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  background-color: aqua;
+  background-image: url("../../../assets/back.sg");
+  background-size: cover;
+}/*# sourceMappingURL=styles_20221016121010.css.map */

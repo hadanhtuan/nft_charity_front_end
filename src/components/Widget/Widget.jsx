@@ -15,19 +15,59 @@ import downGrowth from "../../assets/No.svg";
 // import chart up icon
 import upChart from "../../assets/Yes.svg";
 import downChart from "../../assets/Down.svg";
+//react-hook
+import { useEffect,useState } from "react";
 
+//getPriceAPI
+import { getPrice } from "../../apis/getPrice";
+//style css
 import "./styles.css";
+
+
 export default function MyWidget({ type }) {
+
   let data;
+  const [count,setCount]=useState(0);
+  const [priceCoin,setPriceCoin]=useState({});
+
+  useEffect(()=>{   
+    let symbol;
+    switch (type) {
+      case "Bitcoin":
+        symbol='BTCUSDT';
+        break;
+      case "Ethereum":
+        symbol='ETHUSDT';
+        break;
+      case "Litecoin":
+        symbol='LTCUSDT';
+        break;
+      case "BinanceCoin":
+        symbol='BNBUSDT';
+        break;
+      default:
+        break;
+    }  
+    const getAPI = async () => {
+      const res = await getPrice(symbol);
+      setPriceCoin(res);
+      
+    };
+    getAPI();
+    setTimeout(()=>{
+      setCount(prev=>prev+1);
+    },3000);
+  },[count]);
+  
   switch (type) {
     case "Bitcoin":
       data = {
         title: "Bitcoin",
         coinTitle: "BTC",
         img: bitcoinSVG,
-        weirdNumber: "9784.79",
-        percentChange: "7.2",
-        isGrowth: true,
+        weirdNumber: priceCoin!=null?parseFloat(priceCoin['lastPrice']).toFixed(2):"NaN",
+        percentChange: priceCoin!=null?parseFloat(priceCoin['priceChangePercent']).toFixed(2):"NaN",
+        isGrowth: priceCoin!=null?parseFloat(priceCoin['priceChangePercent']).toFixed(2)>0:"NaN",
       };
       break;
     case "Ethereum":
@@ -35,9 +75,9 @@ export default function MyWidget({ type }) {
         title: "Ethereum",
         coinTitle: "ETH",
         img: ethereumSVG,
-        weirdNumber: "4567.16",
-        percentChange: "6.5",
-        isGrowth: true,
+        weirdNumber: priceCoin!=null?parseFloat(priceCoin['lastPrice']).toFixed(2):"NaN",
+        percentChange: priceCoin!=null?parseFloat(priceCoin['priceChangePercent']).toFixed(2):"NaN",
+        isGrowth: priceCoin!=null?parseFloat(priceCoin['priceChangePercent']).toFixed(2)>0:"NaN",
       };
       break;
     case "Litecoin":
@@ -45,9 +85,9 @@ export default function MyWidget({ type }) {
         title: "Litecoin",
         coinTitle: "LTC",
         img: litecoinSVG,
-        weirdNumber: "8741.19",
-        percentChange: "5.2",
-        isGrowth: false,
+        weirdNumber: priceCoin!=null?parseFloat(priceCoin['lastPrice']).toFixed(2):"NaN",
+        percentChange: priceCoin!=null?parseFloat(priceCoin['priceChangePercent']).toFixed(2):"NaN",
+        isGrowth: priceCoin!=null?parseFloat(priceCoin['priceChangePercent']).toFixed(2)>0:"NaN",
       };
       break;
     case "BinanceCoin":
@@ -55,9 +95,9 @@ export default function MyWidget({ type }) {
         title: "BinanceCoin",
         coinTitle: "BNB",
         img: binancecoinSVG,
-        weirdNumber: "6547.79",
-        percentChange: "9.5",
-        isGrowth: true,
+        weirdNumber: priceCoin!=null?parseFloat(priceCoin['lastPrice']).toFixed(2):"NaN",
+        percentChange: priceCoin!=null?parseFloat(priceCoin['priceChangePercent']).toFixed(2):"NaN",
+        isGrowth: priceCoin!=null?parseFloat(priceCoin['priceChangePercent']).toFixed(2)>0:"NaN",
       };
       break;
     default:

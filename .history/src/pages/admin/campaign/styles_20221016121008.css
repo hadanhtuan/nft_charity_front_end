@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  background-color: aqua;
+  background-image: url("../../../assets/back.spg");
+  background-size: cover;
+}/*# sourceMappingURL=styles_20221016121008.css.map */

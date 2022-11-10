@@ -1,10 +1,32 @@
-import * as React from "react";
+import React, {useEffect, useState} from "react";
 
 import { Card, Box, CssBaseline, Typography, Button } from "@mui/material";
 
 import cardbackground from "../../assets/cardbackground.svg";
+import { ethers } from "ethers";
+
+import { useSelector, useDispatch } from "react-redux";
+
 
 export default function MyBalance() {
+
+  const {account} = useSelector(state => state.solidity)
+  const [balance, setBalance] = useState(0)
+
+  const getBalance = async (acc) => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+    const balance = await provider.getBalance(acc);
+    const balanceInEth = ethers.utils.formatEther(balance);
+    setBalance(Math.round(balanceInEth*10000)/10000)
+  }  
+  useEffect(()=> {
+    
+    getBalance(account)
+    console.log(balance)
+  },[account])
+  
+
   return (
     <Card
       sx={{
@@ -39,11 +61,11 @@ export default function MyBalance() {
           $
         </Typography>
         <Typography variant="subtitle2" sx={{ marginLeft: `4px` }}>
-          Dollar
+          ETH
         </Typography>
       </Box>
       <Typography variant="h5" sx={{ color: `#5A55D2` }}>
-        9784.79
+        {balance}
       </Typography>
       <img src={cardbackground} alt="" />
     </Card>

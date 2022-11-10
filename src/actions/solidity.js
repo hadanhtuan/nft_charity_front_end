@@ -22,30 +22,30 @@ export const fetchSolidity = (accounts)  => async (dispatch) => {
   );
   const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer);
 
-  console.log("ntf contract: ", nft);
-  console.log("marketplace contract: ", marketplace);
+  // console.log("ntf contract: ", nft);
+  // console.log("marketplace contract: ", marketplace);
 
   const itemCount = await marketplace.itemCount();
-  console.log(itemCount);
+  // console.log(itemCount);
   let items = [];
   for (let i = 1; i <= itemCount; i++) {
     const item = await marketplace.items(i);
-    console.log("nft number ", i, ": ", item);
+    // console.log("nft number ", i, ": ", item);
     if (!item.isSold) {
       // get uri url from nft contract
       const uri = await nft.tokenURI(item.tokenId);
       // use uri to fetch the nft metadata stored on ipfs
       const response = await fetch(uri);
-      console.log("response nft number ", i, ": ", response);
+      // console.log("response nft number ", i, ": ", response);
       const metadata = await response.json();
       // get total price of item (item price + fee)
-      console.log(metadata);
+      // console.log(metadata);
       const thisNft = await marketplace.items(item.itemId)
-      const startPrice = ethers.utils.formatEther(thisNft.startPrice)+'ETH'
+      // const startPrice = ethers.utils.formatEther(thisNft.startPrice)+'ETH'
       // Add item to items array
+      console.log(item)
       items.push({
-        startPrice,
-        itemId: item.itemId,
+        id: item.itemId.toNumber(),
         seller: item.seller,
         name: metadata.name,
         description: metadata.description,

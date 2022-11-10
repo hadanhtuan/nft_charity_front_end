@@ -17,12 +17,12 @@ import TuneIcon from "@mui/icons-material/Tune";
 import { useSelector, useDispatch } from "react-redux";
 import "./styles.scss";
 import { getAllNFT } from "../../../actions/solidity";
-export default function Index({marketplaceContract, nftContract,}) {
+export default function Index() {
 
   let { nftList, isLoading } = useSelector(
     (state) => state.solidity
   );
-  console.log(isLoading)
+  console.log(nftList)
   return (
     // trang tong quat
     <Box className="container">

@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  background-color: "#EFF3FD";
+  background-image: url(../../../assets/back.jpg);
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.widget {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.transAndBal {
+  margin-top: 20px;
+  display: flex;
+}/*# sourceMappingURL=styles_20221016125548.css.map */
