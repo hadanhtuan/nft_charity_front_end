@@ -18,6 +18,9 @@ export default function MyNFTInfo({ image, name, description, price }) {
           <img
             src={`data:image/png;base64,${toBase64(image.buffer.data)}`}
             alt=""
+            width={230}
+            height={300}
+            style={{borderRadius:'5px'}}
           />
         </Box>
         <Box
@@ -26,6 +29,7 @@ export default function MyNFTInfo({ image, name, description, price }) {
           flexDirection="column"
           justifyContent="center"
           sx={{ padding: `10px` }}
+          height={300}
         >
           <Box display="flex">
             <Box flex={1}>
@@ -38,12 +42,12 @@ export default function MyNFTInfo({ image, name, description, price }) {
             </Box>
           </Box>
           <Box display="flex">
-            <Box flex={1}>
+            <Box flex={1} sx={{marginTop: '15px'}}>
               <Typography variant="title2" sx={{ fontWeight: `700` }}>
                 Description
               </Typography>
             </Box>
-            <Box flex={1}>
+            <Box flex={1} sx={{height: '250px', overflow: "scroll", marginTop: '15px'}}>
               <Typography variant="title2">{description}</Typography>
             </Box>
           </Box>

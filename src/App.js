@@ -1,25 +1,42 @@
-import React, {useState, useEffect} from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import admin_home from "./pages/admin/admin_home";
 import campaign from "./pages/admin/campaign";
 import auction from "./pages/admin/auction";
 import list_nft from "./pages/admin/list_nft";
+import list_auction from "./pages/admin/list_auction";
+import auction_detail from "./pages/admin/auction_detail";
 
 import { ethers } from "ethers";
-import Web3 from 'web3';
+import Web3 from "web3";
 import MarketplaceAbi from "./utils/contractsData/Marketplace.json";
 import MarketplaceAddress from "./utils/contractsData/Marketplace-address.json";
 import NFTAbi from "./utils/contractsData/NFT.json";
 import NFTAddress from "./utils/contractsData/NFT-address.json";
 import { useDispatch, useSelector } from "react-redux";
 import { CONNECT_ACC, FETCH_SOLIDITY } from "./constraint/actionTypes";
-import {fetchSolidity} from './actions/solidity'
+import { fetchSolidity } from "./actions/solidity";
+import MySidebar from "./components/sidebar/SideBar";
+
+import {
+  Box,
+  CssBaseline,
+  Typography,
+  Button,
+  CircularProgress,
+} from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
 function App() {
-
   const dispatch = useDispatch();
-  let accounts
-  const web3Handler = async () => { // connect metamask
+  let accounts;
+  const web3Handler = async () => {
+    // connect metamask
     accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
@@ -39,25 +56,34 @@ function App() {
     dispatch({
       type: CONNECT_ACC,
       payload: {
-        account: accounts[0]
+        account: accounts[0],
       },
     });
   };
 
   useEffect(() => {
     web3Handler();
-    dispatch(fetchSolidity())
+    dispatch(fetchSolidity());
   });
   return (
     <Router>
-      <Switch>
-        <Route path="/admin" exact component={admin_home} />
-        <Route path="/admin/campaign" exact component={campaign} />
-        <Route path="/admin/auction" exact component={auction} />
-        <Route path="/admin/list_nft" exact component={list_nft} />
-      </Switch>
+      <Box className="container">
+        <CssBaseline />
+        <MySidebar />
+
+          <Switch>
+            <Route path="/" exact component={() => <Redirect to="/admin" />} />
+            <Route path="/admin" exact component={admin_home} />
+            <Route path="/admin/campaign" exact component={campaign} />
+            <Route path="/admin/auction" exact component={auction} />
+            <Route path="/admin/list_nft" exact component={list_nft} />
+            <Route path="/admin/list_auction" exact component={list_auction} />
+            <Route path="/admin/list_auction/:nft_id" exact component={auction_detail} />
+          </Switch>
+
+      </Box>
     </Router>
-  ); 
-} 
+  );
+}
 
 export default App;

@@ -17,20 +17,14 @@ import TuneIcon from "@mui/icons-material/Tune";
 import { useSelector, useDispatch } from "react-redux";
 import "./styles.scss";
 import { getAllNFT } from "../../../actions/solidity";
-export default function Index() {
+export default function List_NFT() {
 
   let { nftList, isLoading } = useSelector(
     (state) => state.solidity
   );
   console.log(nftList)
   return (
-    // trang tong quat
-    <Box className="container">
-      {/* reset css */}
-      <CssBaseline />
-      {/* sidebar */}
-      <MySidebar />
-      {/* trang noi dung */}
+   
       <Box className="page">
         {/* appbar */}
         <MyAppBar type="List_NFT" />
@@ -86,6 +80,5 @@ export default function Index() {
           )}
         </Box>
       </Box>
-    </Box>
   );
 }

@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
+
+html,
+body,
+#root,
+.app,
+.content {
+  height: 100%;
+  width: 100%;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+body{
+  
+  background: hsla(18, 4%, 49%, 0.3);
+
+  background: linear-gradient(90deg, rgb(236, 220, 213) 0%, hsla(203, 69%, 84%, 0.3) 100%);
+  
+  background: -moz-linear-gradient(90deg, rgb(226, 214, 209) 0%, hsla(203, 69%, 84%,0.3) 100%);
+  
+  background: -webkit-linear-gradient(90deg, rgb(231, 217, 212) 0%, hsla(203, 69%, 84%,0.3) 100%);
+  
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F6CFBE", endColorstr="#B9DCF2", GradientType=1 );
+}
+
+.app {
+  display: flex;
+  position: relative;
+
+}
+
+::-webkit-scrollbar {
+  width: 10px;  
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} 

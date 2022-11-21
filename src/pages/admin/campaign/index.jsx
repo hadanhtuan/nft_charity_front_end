@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./styles.scss";
 
 
-export default function Index() {
+export default function Campaign() {
 
   const dispatch = useDispatch()
 
@@ -23,13 +23,7 @@ export default function Index() {
   });
 
   return (
-    // trang tong quat
-    <Box className="container">
-      {/* reset css */}
-      <CssBaseline />
-      {/* sidebar */}
-      <MySidebar />
-      {/* trang noi dung */}
+  
       <Box className="page">
         {/* appbar */}
         <MyAppBar type="Campaign" />
@@ -77,6 +71,5 @@ export default function Index() {
           </Grid>
         </Box>
       </Box>
-    </Box>
   );
 }

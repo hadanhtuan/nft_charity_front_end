@@ -6,7 +6,7 @@ import NFTAbi from "../utils/contractsData/NFT.json";
 import NFTAddress from "../utils/contractsData/NFT-address.json";
 
 import {FETCH_NFT, START_LOADING_SOLIDITY, FETCH_SOLIDITY} from '../constraint/actionTypes'
-
+import { fromWei } from "../utils";
 
 export const fetchSolidity = (accounts)  => async (dispatch) => {
   dispatch({type: START_LOADING_SOLIDITY})
@@ -31,7 +31,6 @@ export const fetchSolidity = (accounts)  => async (dispatch) => {
   for (let i = 1; i <= itemCount; i++) {
     const item = await marketplace.items(i);
     // console.log("nft number ", i, ": ", item);
-    if (!item.isSold) {
       // get uri url from nft contract
       const uri = await nft.tokenURI(item.tokenId);
       // use uri to fetch the nft metadata stored on ipfs
@@ -41,18 +40,23 @@ export const fetchSolidity = (accounts)  => async (dispatch) => {
       // get total price of item (item price + fee)
       // console.log(metadata);
       const thisNft = await marketplace.items(item.itemId)
-      // const startPrice = ethers.utils.formatEther(thisNft.startPrice)+'ETH'
+      const startPrice = ethers.utils.formatEther(thisNft.startPrice)
+      // console.log(item.highestBidder)
       // Add item to items array
-      console.log(item)
       items.push({
+        startPrice,
         id: item.itemId.toNumber(),
         seller: item.seller,
         name: metadata.name,
         description: metadata.description,
         image: metadata.image,
+        isSold: item.isSold,
+        isStarted: item.isStarted,
+        endAt: item.endAt.toNumber(),
+        highestBid: Number(fromWei(item.highestBid.toString())),
+        highestBidder: item.highestBidder
       }); 
-    }
-  }
+  } 
 
   dispatch({
     type: FETCH_SOLIDITY,

@@ -31,7 +31,6 @@ export default function MySidebar() {
   }}
   return (
     <Box sx={{ display: `flex` }}>
-      <CssBaseline />
       <Drawer
         sx={{
           width: drawerWidth,
@@ -94,6 +93,15 @@ export default function MySidebar() {
                     <CampaignIcon />
                   </ListItemIcon>
                   <ListItemText primary="Campaign" />
+                </ListItemButton>
+              </ListItem>
+
+              <ListItem disablePadding>
+                <ListItemButton onClick={()=>{history.push('/admin/list_auction')}} sx={pathname == 'list_auction' ? backLink : {}}>
+                  <ListItemIcon>
+                    <FormatListBulletedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="List Auction" />
                 </ListItemButton>
               </ListItem>
 

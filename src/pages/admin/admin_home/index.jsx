@@ -11,13 +11,7 @@ import MyRecentAct from "../../../components/RecentActivities/Recent";
 import "./styles.scss";
 export default function Index() {
   return (
-    // trang tong quat
-    <Box className="container">
-      {/* reset css */}
-      <CssBaseline />
-      {/* sidebar */}
-      <MySidebar />
-      {/* trang noi dung */}
+
       <Box className="page">
         {/* appbar */}
         <MyAppBar type="Dashboard" />
@@ -52,6 +46,5 @@ export default function Index() {
           </Box>
         </Grid>
       </Box>
-    </Box>
   );
 }

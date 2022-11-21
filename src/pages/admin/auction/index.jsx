@@ -16,7 +16,7 @@ import {ethers} from 'ethers'
 import MyTableCampaign from "../../../components/TableAuction/TableCamp";
 import MyTableNFT from "../../../components/TableAuction/TableNFT";
 import {useSelector, useDispatch} from 'react-redux'
-import { createAuction, getAuction } from '../../../actions/auction'
+import { createAuction, getAllAuction } from '../../../actions/auction'
 import "./styles.scss";
 const defaultData = { startPrice: 0.0001, endAt: 1 };
 export default function Index() {
@@ -29,7 +29,7 @@ export default function Index() {
   const dispatch = useDispatch()
   const {auctions} = useSelector(state => state.auction)
   useEffect(()=>{
-    dispatch(getAuction())
+    dispatch(getAllAuction())
   }, [])
   const handleClickOpen = () => {
     if (ids.campId && ids.nftId) {
@@ -53,15 +53,10 @@ export default function Index() {
     dispatch(createAuction(auc))
     
   }
+  
 
   return (
-    // trang tong quat
-    <Box className="container">
-      {/* reset css */}
-      <CssBaseline />
-      {/* sidebar */}
-      <MySidebar />
-      {/* trang noi dung */}
+   
       <Box className="page">
         {/* appbar */}
         <MyAppBar type="Auction" />
@@ -112,10 +107,7 @@ export default function Index() {
             </Box>
           </Grid>
         </Box>
-      </Box>
-
-      {/*dialog */}
-      <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Create Auction</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -148,6 +140,9 @@ export default function Index() {
             onChange={(e) => {
               setFormData({ ...formData, [e.target.name]: e.target.value });
             }}
+            inputProps={{
+              step: "0.01",
+            }}
             fullWidth
             variant="standard"
           />
@@ -157,7 +152,8 @@ export default function Index() {
           <Button onClick={handleCreateAuction}>Subscribe</Button>
         </DialogActions>
       </Dialog>
-      {/*dialog */}
-    </Box>
+      </Box>
+
+     
   );
 }

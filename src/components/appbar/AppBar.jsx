@@ -105,7 +105,6 @@ export default function MyAppBar({ type }) {
       >
         <Typography variant="h6">{data.title}</Typography>
 
-        <MySearch />
         {/* the box to contain the right side of appbar */}
         {/* <Box sx={{ display: `flex` }}>
           <Button color="inherit">Connect Wallet</Button>

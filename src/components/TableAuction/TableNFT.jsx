@@ -16,7 +16,7 @@ import { EDIT_CAMP, PICK_CAMP } from "../../constraint/actionTypes";
 
 export default function MyTableCampaign({ setIds, auctions }) {
   const { nftList, isLoading } = useSelector((state) => state.solidity); //lay campaigns tu store
-
+  console.log(nftList)
   const list = nftList.filter((nft) => {
     let flag = true;
     auctions.forEach((auc) => {
@@ -27,7 +27,7 @@ export default function MyTableCampaign({ setIds, auctions }) {
     return flag;
   });
 
-  const dispatch = useDispatch();
+  console.log(list)   
 
   function toBase64(arr) {
     //arr = new Uint8Array(arr) if it's an ArrayBuffer
