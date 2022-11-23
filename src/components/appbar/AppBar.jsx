@@ -12,6 +12,9 @@ import MarketplaceAddress from "../../utils/contractsData/Marketplace-address.js
 import NFTAbi from "../../utils/contractsData/NFT.json";
 import NFTAddress from "../../utils/contractsData/NFT-address.json";
 import { FETCH_SOLIDITY } from "../../constraint/actionTypes";
+import { Toolbar } from "@mui/material";
+
+import styled from "@emotion/styled";
 
 export default function MyAppBar({ type }) {
   let data;
@@ -42,9 +45,9 @@ export default function MyAppBar({ type }) {
       };
       break;
   }
-  const dispatch = useDispatch()
-  const account = useSelector((state) => state.solidity.account)
-  console.log(account)
+  const dispatch = useDispatch();
+  const account = useSelector((state) => state.solidity.account);
+  console.log(account);
 
   const web3Handler = async () => {
     const accounts = await window.ethereum.request({
@@ -81,39 +84,23 @@ export default function MyAppBar({ type }) {
       },
     });
   };
-  
-  return (
-    <AppBar
-      position="static"
-      sx={{
-        height: "50px",
-        display: `flex`,
-        backgroundColor: `transparent`,
-        color: `inherit`,
-      }}
-      elevation={0}
-    >
-      <Box
-        sx={{
-          height: `100%`,
-          display: `flex`,
-          flexDirection: `row`,
-          justifyContent: `space-between`,
-          alignItems: `center`,
-          padding: `0px 40px`,
-        }}
-      >
-        <Typography variant="h6">{data.title}</Typography>
+  //
 
-        {/* the box to contain the right side of appbar */}
-        {/* <Box sx={{ display: `flex` }}>
-          <Button color="inherit">Connect Wallet</Button>
-          <Account />
-        </Box> */}
-        <Typography onClick={()=>{account ? console.log('') : web3Handler()}} sx={{display:'flex', justifyContent: 'space-between', alignItems:"center", marginRight: "30px", cursor:"pointer"}}>
-              {account? `${account.slice(0, 5) + '...' + account.slice(38, 42)}` : 'Connect Wallet'}
-        </Typography>
-      </Box>
-    </AppBar>
+  return (
+    <>
+      <AppBar
+        color="inherit"
+        sx={{
+          backgroundColor: "transparent",
+        }}
+        position="sticky"
+        elevation={0}
+      >
+        <Toolbar>
+          <Typography variant="h6">Super Idol ching chong bing bong</Typography>
+        </Toolbar>
+      </AppBar>
+      {/* <Toolbar /> */}
+    </>
   );
 }

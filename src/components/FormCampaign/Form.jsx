@@ -17,6 +17,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { CurrencyYuanOutlined } from "@mui/icons-material";
 import { createCamp, editCamp } from "../../actions/campaign";
 import { PICK_CAMP } from "../../constraint/actionTypes";
+
+import "./styles.scss";
+
 const defaultData = {
   title: "",
   desc: "",
@@ -57,15 +60,17 @@ export default function Form() {
   }, [currentId]);
 
   return (
-    <Card sx={{ padding: `20px`, height: `100%` }}>
-      <Box sx={{ display: `flex`, alignItems: `center` }}>
-        <TuneIcon />
-        <Typography variant="h6" sx={{ fontWeight: `700` }}>
-          {currentCamp ? "Edit Campaign" : "New Campaign"}
-        </Typography>
-      </Box>
-      <Divider />
-      <form>
+    <Card className="formEditCampaign">
+      <Box className="formEditCampaign__container">
+        <Box className="titleContainer">
+          <Box className="editCampaign_title">
+            <TuneIcon />
+            <Typography variant="h6" fontWeight={700}>
+              {currentCamp ? "Edit Campaign" : "New Campaign"}
+            </Typography>
+          </Box>
+          <Divider />
+        </Box>
         <TextField
           name="title"
           variant="outlined"
@@ -130,13 +135,13 @@ export default function Form() {
             type="submit"
             onClick={() => {
               dispatch({ type: PICK_CAMP, payload: "" });
-              setFormData(defaultData)
+              setFormData(defaultData);
             }}
           >
             Cancel
           </Button>
         )}
-      </form>
+      </Box>
     </Card>
   );
 }

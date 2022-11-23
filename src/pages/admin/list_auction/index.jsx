@@ -6,7 +6,7 @@ import {
   Button,
   IconButton,
   CircularProgress,
-  Card
+  Card,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import MyAppBar from "../../../components/appbar/AppBar";
@@ -25,13 +25,13 @@ import { useHistory } from "react-router-dom";
 
 const List_Auc = () => {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
 
-  const {auctions, isLoading}  = useSelector(state=>state.auction)
+  const { auctions, isLoading } = useSelector((state) => state.auction);
 
-  useEffect(()=> {
-    dispatch(getAllAuction()) 
-  }, [])
+  useEffect(() => {
+    dispatch(getAllAuction());
+  }, []);
   const columns = [
     {
       field: "nft_id",
@@ -76,7 +76,7 @@ const List_Auc = () => {
               margin: "3px",
               objectFit: "cover",
               borderRadius: "20px",
-              padding: '10px'
+              padding: "10px",
             }}
             src={params.row.img2_url}
             alt=""
@@ -100,7 +100,7 @@ const List_Auc = () => {
               aria-label="edit"
               component="label"
               onClick={() => {
-                history.push(`/admin/list_auction/${params.row.nft_id}`)
+                history.push(`/admin/list_auction/${params.row.nft_id}`);
               }}
             >
               <EditIcon />
@@ -116,7 +116,7 @@ const List_Auc = () => {
 
   return (
     <Box className="page">
-      <MyAppBar type="Auction" />
+      {/* <MyAppBar type="Auction" /> */}
 
       <Box className="page_content" sx={{ padding: `20px 40px 15px 40px` }}>
         <Box className="toolbar">

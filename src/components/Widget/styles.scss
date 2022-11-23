@@ -1,0 +1,43 @@
+.WidgetItem
+{
+
+    .Item_container
+    {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+
+
+        .Item_leftSide
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .item_title
+            {
+                display: flex;
+                gap: 3px;
+            }
+
+            .widget_icon
+            {
+                width: 30px;
+            }
+
+
+        }
+
+        .Item_rightSide
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .img_chart
+            {}
+
+
+        }
+    }
+}

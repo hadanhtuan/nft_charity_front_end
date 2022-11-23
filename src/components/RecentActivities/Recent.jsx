@@ -1,12 +1,13 @@
 import * as React from "react";
 
 import { Card, Box, Typography } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 // import image icon
 import bitcoinSVG from "../../assets/bitcoin.svg";
 import ethereumSVG from "../../assets/ethereum.svg";
 import litecoinSVG from "../../assets/litecoin.svg";
-
+import "./styles.scss";
 function row({ type }) {
   let data;
   switch (type) {
@@ -40,45 +41,45 @@ function row({ type }) {
     default:
       break;
   }
+
   return (
-    <React.Fragment>
-      <Grid item>
-        <img src={data.img} alt="" />
-      </Grid>
-      <Grid item>{data.title}</Grid>
-      <Grid item>{data.time}</Grid>
-      <Grid item>{data.moneyChange}</Grid>
-      <Grid item>{data.status}</Grid>
-    </React.Fragment>
+    <Box className="row_item">
+      <Box className="item_img_container">
+        <img className="row_item_img" src={data.img} alt="" />
+      </Box>
+
+      <Box className="item_text_container">
+        <Typography className="item_title" item>
+          {data.title}
+        </Typography>
+      </Box>
+      <Box className="item_text_container">
+        <Typography className="item_time">{data.time}</Typography>
+      </Box>
+      <Box className="item_text_container">
+        <Typography className="item_money">{data.moneyChange}</Typography>
+      </Box>
+      <Box className="item_text_container">
+        <Typography className="item_status">{data.status}</Typography>
+      </Box>
+    </Box>
   );
 }
 
 export default function MyRecentAct() {
   return (
-    <Card
-      sx={{
-        display: `flex`,
-        padding: `20px 20px 20px 20px`,
-        flexDirection: `column`,
-      }}
-    >
-      {/* box to cointain content */}
-      <Box sx={{ display: `flex`, flexDirection: `column` }}>
+    <Card className="MyRecentAct">
+      <Box className="MyRecentAct_container">
+        {/* box to cointain content */}
         <Typography variant="h6" gutterBottom>
           Recent Actitivites
         </Typography>
 
-        <Grid container md={12}>
-          <Grid item display="flex" alignItems="center" spacing={12} container>
-            {row({ type: "Bitcoin" })}
-          </Grid>
-          <Grid item display="flex" alignItems="center" spacing={12} container>
-            {row({ type: "Ethereum" })}
-          </Grid>
-          <Grid item display="flex" alignItems="center" spacing={12} container>
-            {row({ type: "Litecoin" })}
-          </Grid>
-        </Grid>
+        <Box className="row">
+          {row({ type: "Bitcoin" })}
+          {row({ type: "Ethereum" })}
+          {row({ type: "Litecoin" })}
+        </Box>
       </Box>
     </Card>
   );

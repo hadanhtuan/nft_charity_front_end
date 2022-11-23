@@ -11,40 +11,24 @@ import MyRecentAct from "../../../components/RecentActivities/Recent";
 import "./styles.scss";
 export default function Index() {
   return (
-
-      <Box className="page">
-        {/* appbar */}
-        <MyAppBar type="Dashboard" />
-        {/* noi dung */}
-        <Grid
-          container
-          disableEqualOverflow={true}
-          md={12}
-          sx={{
-            display: `flex`,
-            flexDirection: `column`,
-            padding: `20px 40px 15px 40px`,
-          }}
-        >
-          {/* widget box */}
+    <Box className="homepages">
+      <Box className="homepages_container">
+        <Box className="homepages_left">
           <Box className="widgets">
             <MyWidget type="Bitcoin" />
             <MyWidget type="Litecoin" />
             <MyWidget type="Ethereum" />
-            <MyWidget type="BinanceCoin" />
           </Box>
-
-          {/* TransactionOverview and balance box */}
-          <Box className="transAndBal">
-            <MyTransactionOverview />
-            <MyBalance />
-          </Box>
-
-          {/* Box to contain list of recent activities */}
-          <Box className="recentAct">
-            <MyRecentAct />
-          </Box>
-        </Grid>
+          <MyTransactionOverview />
+        </Box>
+        <Box className="homepages_right">
+          <MyWidget type="BinanceCoin" />
+          <MyBalance />
+        </Box>
       </Box>
+      <Box className="recentAct">
+        <MyRecentAct />
+      </Box>
+    </Box>
   );
 }

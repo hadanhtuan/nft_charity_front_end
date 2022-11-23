@@ -29,8 +29,10 @@ import {
   Typography,
   Button,
   CircularProgress,
+  Container,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import MyAppBar from "./components/appbar/AppBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -67,20 +69,36 @@ function App() {
   });
   return (
     <Router>
-      <Box className="container">
-        <CssBaseline />
-        <MySidebar />
-
-          <Switch>
-            <Route path="/" exact component={() => <Redirect to="/admin" />} />
-            <Route path="/admin" exact component={admin_home} />
-            <Route path="/admin/campaign" exact component={campaign} />
-            <Route path="/admin/auction" exact component={auction} />
-            <Route path="/admin/list_nft" exact component={list_nft} />
-            <Route path="/admin/list_auction" exact component={list_auction} />
-            <Route path="/admin/list_auction/:nft_id" exact component={auction_detail} />
-          </Switch>
-
+      <Box className="app">
+        <Box className="left_side">
+          <MySidebar />
+        </Box>
+        <Box className="right_side">
+          <MyAppBar />
+          <Container className="pages" maxWidth="xl">
+            <Switch>
+              <Route
+                path="/"
+                exact
+                component={() => <Redirect to="/admin" />}
+              />
+              <Route path="/admin" exact component={admin_home} />
+              <Route path="/admin/campaign" exact component={campaign} />
+              <Route path="/admin/auction" exact component={auction} />
+              <Route path="/admin/list_nft" exact component={list_nft} />
+              <Route
+                path="/admin/list_auction"
+                exact
+                component={list_auction}
+              />
+              <Route
+                path="/admin/list_auction/:nft_id"
+                exact
+                component={auction_detail}
+              />
+            </Switch>
+          </Container>
+        </Box>
       </Box>
     </Router>
   );

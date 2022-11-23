@@ -23,25 +23,20 @@ export default function MyTableCampaign() {
     {
       field: "id",
       headerName: "ID",
-      editable: true,
-      width: 10,
     },
     {
       field: "title",
       headerName: "Campaign",
-      editable: true,
-      width: 200,
     },
     {
       field: "desc",
       headerName: "Description",
-      editable: true,
-      width: 100,
+      width: 150,
     },
     {
       field: "img1_url",
       headerName: "Image",
-      width: 150,
+      width: 250,
       renderCell: (params) => {
         return (
           <img
@@ -78,8 +73,6 @@ export default function MyTableCampaign() {
     {
       field: "zone",
       headerName: "Zone",
-      editable: true,
-      width: 100,
     },
     {
       field: "icon",
@@ -100,7 +93,7 @@ export default function MyTableCampaign() {
               <DeleteOutlinedIcon />
             </IconButton>
           </Box>
-        ); 
+        );
       },
     },
   ];
@@ -121,10 +114,9 @@ export default function MyTableCampaign() {
         columns={columns}
         rows={campaigns}
         rowHeight={150}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
+        checkboxSelection={false}
         disableSelectionOnClick
+        hideFooterPagination
         experimentalFeatures={{ newEditingApi: true }}
       />
     </Card>

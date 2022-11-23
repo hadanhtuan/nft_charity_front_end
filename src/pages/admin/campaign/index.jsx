@@ -2,74 +2,43 @@ import React, { useState, useEffect } from "react";
 import { Box, CssBaseline, Typography, Button } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
-import MySidebar from "../../../components/sidebar/SideBar";
-import MyAppBar from "../../../components/appbar/AppBar";
 import MySearch from "../../../components/SearchBar/SearchBar";
 import TuneIcon from "@mui/icons-material/Tune";
 
 import MyTableCampaign from "../../../components/TableCampaign/TableCampaign";
 import FormCampaign from "../../../components/FormCampaign/Form";
-import {getCamp} from '../../../actions/campaign'
+import { getCamp } from "../../../actions/campaign";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.scss";
 
-
 export default function Campaign() {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCamp());  // req lấy campaigns từ api và lưu vào store
+    dispatch(getCamp()); // req lấy campaigns từ api và lưu vào store
   });
 
   return (
-  
-      <Box className="page">
-        {/* appbar */}
-        <MyAppBar type="Campaign" />
-        {/* noi dung */}
-        <Box className="page_content">
-          <Grid
-            container
-            disableEqualOverflow={true}
-            md={12}
-            sx={{
-              display: `flex`,
-              flexDirection: `column`,
-              padding: `20px 40px 15px 40px`,
-            }}
-          >
-            {/* start all content in here */}
+    <Box className="homepages">
+      {/* start all content in here */}
 
-            {/* toolbar box to search or filter somthing */}
-            <Box className="toolbar">
-              <Box className="toolbar_left">
-                <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                  Active Campaign
-                </Typography>
-                <Typography variant="subtitle2" sx={{ fontSize: "0.8rem" }}>
-                  274 Campaigns
-                </Typography>
-                <MySearch />
-              </Box>
-              <Button variant="contained" startIcon={<TuneIcon />}>
-                Filter
-              </Button>
-            </Box>
+      {/* toolbar box to search or filter somthing */}
+      <Box className="homepages__container">
+        <Box className="container_left">
+          <Typography variant="h6">Active Campaign</Typography>
 
-            {/* an box to contain the body */}
-            <Box sx={{ marginTop: `25px` }}>
-              <Grid container md={12} spacing={8}>
-                <Grid item md={8}>
-                  <MyTableCampaign />
-                </Grid>
-                <Grid item md>
-                  <FormCampaign/>
-                </Grid>
-              </Grid>
-            </Box>
-          </Grid>
+          <MySearch />
         </Box>
+        <Button color="secondary" variant="contained" startIcon={<TuneIcon />}>
+          Filter
+        </Button>
       </Box>
+
+      {/* an box to contain the body */}
+      <Box className="campaign_data">
+        <MyTableCampaign />
+        <FormCampaign />
+      </Box>
+    </Box>
   );
 }

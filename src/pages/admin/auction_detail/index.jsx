@@ -17,9 +17,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { toBase64, toWei, fromWei } from "../../../utils";
 import DateCountdown from "react-date-countdown-timer";
-import MyAppBar from "../../../components/appbar/AppBar";
 import "./styles.scss";
-import "./styles.css";
 const Auction_detail = () => {
   const [price, setPrice] = useState(0);
   const [isDisplay, setIsDisplay] = useState(false);
@@ -58,7 +56,7 @@ const Auction_detail = () => {
       }
     }
   };
-  
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAuctionById(nft_id));
@@ -99,7 +97,7 @@ const Auction_detail = () => {
 
   return (
     <Box className="page">
-      <MyAppBar type="Auction" />
+      {/* <MyAppBar type="Auction" /> */}
       <Box className="page_content">
         <Box sx={{ padding: "16px 50px", height: "100%" }}>
           <Box
@@ -155,7 +153,7 @@ const Auction_detail = () => {
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
-                  gap: 20
+                  gap: 20,
                 }}
               >
                 <img
@@ -170,7 +168,9 @@ const Auction_detail = () => {
                   alt=""
                 />
                 <Typography align="center">{nft?.name}</Typography>
-                <Button onClick={endAuc} variant="contained">End Auction</Button>
+                <Button onClick={endAuc} variant="contained">
+                  End Auction
+                </Button>
               </Box>
             )}
 
@@ -198,10 +198,18 @@ const Auction_detail = () => {
                   }}
                 />
               )}
-              <Box sx={{display: 'flex', gap: 100, margin:"30px"}}>
-                
-                <TextField id="standard-basic" label="Highest Bid" value={`${nft?.highestBid} ETH`} />
-                <TextField id="standard-basic" label="Highest Bidder"noWrap  value={`${nft?.highestBidder} `}/>
+              <Box sx={{ display: "flex", gap: 100, margin: "30px" }}>
+                <TextField
+                  id="standard-basic"
+                  label="Highest Bid"
+                  value={`${nft?.highestBid} ETH`}
+                />
+                <TextField
+                  id="standard-basic"
+                  label="Highest Bidder"
+                  noWrap
+                  value={`${nft?.highestBidder} `}
+                />
               </Box>
 
               <Typography align="justify" paragraph>
