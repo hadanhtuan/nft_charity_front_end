@@ -1,8 +1,6 @@
 import React from "react";
-
-import { Card, Box, Typography } from "@mui/material";
-
-
+import { Card, Box, Typography, TextField, CardContent } from "@mui/material";
+import "./styles.scss";
 
 function toBase64(arr) {
   //arr = new Uint8Array(arr) if it's an ArrayBuffer
@@ -12,57 +10,39 @@ function toBase64(arr) {
 export default function MyNFTInfo({ image, name, description, price }) {
   console.log(image);
   return (
-    <Card>
-      <Box sx={{ display: `flex`, padding: `10px` }}>
-        <Box flex={1} sx={{ display: `flex`, alignItems: 'center'}}>
+    <Box className="MyNFTInfo">
+      <Box className="MyNFTInfo__container">
+        <Box className="MyNFTInfo__headerImg">
           <img
             src={`data:image/png;base64,${toBase64(image.buffer.data)}`}
-            alt=""
-            width={230}
-            height={300}
-            style={{borderRadius:'5px'}}
+            alt="NFT_Image"
+            style={{ borderRadius: "5px" }}
           />
         </Box>
-        <Box
-          flex={1}
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          sx={{ padding: `10px` }}
-          height={300}
-        >
-          <Box display="flex">
-            <Box flex={1}>
-              <Typography variant="title2" sx={{ fontWeight: `700` }}>
-                Name
-              </Typography>
-            </Box>
-            <Box flex={1}>
-              <Typography variant="title2">{name}</Typography>
-            </Box>
-          </Box>
-          <Box display="flex">
-            <Box flex={1} sx={{marginTop: '15px'}}>
-              <Typography variant="title2" sx={{ fontWeight: `700` }}>
-                Description
-              </Typography>
-            </Box>
-            <Box flex={1} sx={{height: '250px', overflow: "scroll", marginTop: '15px'}}>
-              <Typography variant="title2">{description}</Typography>
-            </Box>
-          </Box>
-          {/* <Box display="flex">
-            <Box flex={1}>
-              <Typography variant="title2" sx={{ fontWeight: `700` }}>
-                Price
-              </Typography>
-            </Box>
-            <Box flex={1}>
-              <Typography variant="title2">{price}</Typography>
-            </Box>
-          </Box> */}
-        </Box>
+        <CardContent className="MyNFTInfo__content">
+          <Typography variant="body1" sx={{ textTransform: "uppercase" }}>
+            nft_id
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ textTransform: "uppercase" }}
+            gutterBottom
+          >
+            {name}
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{ textTransform: "uppercase" }}
+            fontWeight="700"
+          >
+            0.434 eth
+          </Typography>
+
+          {/* <Typography align="justify" variant="body2">
+            {description}
+          </Typography> */}
+        </CardContent>
       </Box>
-    </Card>
+    </Box>
   );
 }

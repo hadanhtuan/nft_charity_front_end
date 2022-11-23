@@ -1,11 +1,15 @@
 .formEditCampaign
 {
+    flex: 1;
+    max-width: fit-content;
+
+    height: fit-content;
+
     &__container
     {
         display: flex;
         flex-direction: column;
         padding: 24px;
-        gap: 20px;
 
         .editCampaign_title
         {
@@ -14,4 +18,9 @@
             gap: 8px;
         }
     }
+}
+
+.uploadImg_container
+{
+    margin-top: 8px;
 }

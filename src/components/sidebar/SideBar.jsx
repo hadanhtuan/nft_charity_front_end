@@ -41,13 +41,14 @@ export default function MySidebar() {
           width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
+            backgroundColor: "transparent",
             width: drawerWidth,
             boxSizing: "border-box",
+            border: "none",
           },
         }}
         variant="permanent"
         anchor="left"
-        elevation={4}
       >
         {/* this is a full box to contain any thing in sidebar */}
 
@@ -71,8 +72,8 @@ export default function MySidebar() {
               <Typography ml={1}>NFT CHARITY</Typography>
             </Box>
           </Box>
-          <Divider />
         </Box>
+        <Divider />
         {/* end phan header */}
         <Box className="body">
           {/* start phan option */}

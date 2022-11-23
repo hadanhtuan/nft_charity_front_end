@@ -14,6 +14,8 @@ import * as api from "../../apis";
 import { useDispatch, useSelector } from "react-redux";
 import { EDIT_CAMP, PICK_CAMP } from "../../constraint/actionTypes";
 
+import "./styles.scss";
+
 export default function MyTableCampaign() {
   const { campaigns, isLoading } = useSelector((state) => state.campaign); //lay campaigns tu store
 
@@ -23,10 +25,12 @@ export default function MyTableCampaign() {
     {
       field: "id",
       headerName: "ID",
+      width: 50,
     },
     {
       field: "title",
       headerName: "Campaign",
+      width: 150,
     },
     {
       field: "desc",
@@ -39,37 +43,12 @@ export default function MyTableCampaign() {
       width: 250,
       renderCell: (params) => {
         return (
-          <img
-            style={{
-              width: "150px",
-              height: "150px",
-              margin: "3px",
-            }}
-            src={params.row.img1_url}
-            alt=""
-          />
+          <Box className="imgContainer">
+            <img src={params.row.img1_url} alt="Campaign_Image" />
+          </Box>
         );
       },
     },
-    // {
-    //   field: "img2_url",
-    //   headerName: "Image",
-    //   width: 200,
-    //   renderCell: (params) => {
-    //     return (
-    //       <img
-    //         style={{
-    //           width: "150px",
-    //           height: "150px",
-    //           margin: "3px",
-    //           objectFit: "cover"
-    //         }}
-    //         src={params.row.img2_url}
-    //         alt=""
-    //       />
-    //     );
-    //   },
-    // },
     {
       field: "zone",
       headerName: "Zone",
@@ -97,28 +76,24 @@ export default function MyTableCampaign() {
       },
     },
   ];
-
   return isLoading ? (
     <CircularProgress />
   ) : (
-    <Card
-      sx={{
-        padding: `20px`,
-        display: `flex`,
-        height: `600px`,
-        width: "100%",
-      }}
-    >
-      {/* Header */}
-      <DataGrid
-        columns={columns}
-        rows={campaigns}
-        rowHeight={150}
-        checkboxSelection={false}
-        disableSelectionOnClick
-        hideFooterPagination
-        experimentalFeatures={{ newEditingApi: true }}
-      />
+    <Card className="tableCampaign">
+      <Box className="tableCampaign__container">
+        <DataGrid
+          columns={columns}
+          rows={campaigns}
+          rowHeight={170}
+          checkboxSelection={false}
+          disableSelectionOnClick
+          hideFooterPagination
+          experimentalFeatures={{ newEditingApi: true }}
+          components={{
+            Footer: () => null,
+          }}
+        />
+      </Box>
     </Card>
   );
 }

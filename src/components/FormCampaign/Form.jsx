@@ -6,6 +6,7 @@ import {
   Divider,
   TextField,
   Button,
+  ButtonBase,
 } from "@mui/material";
 // import date
 import MyDatePicker from "../DatePicker/DatePicker";
@@ -59,6 +60,8 @@ export default function Form() {
     }
   }, [currentId]);
 
+  const [open, setOpen] = React.useState(false);
+
   return (
     <Card className="formEditCampaign">
       <Box className="formEditCampaign__container">
@@ -80,6 +83,7 @@ export default function Form() {
           onChange={(e) => {
             setFormData({ ...formData, [e.target.name]: e.target.value });
           }}
+          margin="normal"
         />
         <TextField
           name="desc"
@@ -90,25 +94,31 @@ export default function Form() {
           onChange={(e) => {
             setFormData({ ...formData, [e.target.name]: e.target.value });
           }}
+          margin="normal"
+          multiline
+          rows={5}
         />
-        <div>
+        <Box className="uploadImg_container">
           <FileBase
+            className="uploadImg"
             type="file"
             multiple={false}
             onDone={({ base64 }) =>
               setFormData({ ...formData, img1_url: base64 })
             }
           />
-        </div>
-        <div>
+        </Box>
+        <Box className="uploadImg_container">
           <FileBase
+            className="uploadImg"
             type="file"
             multiple={false}
             onDone={({ base64 }) =>
               setFormData({ ...formData, img2_url: base64 })
             }
           />
-        </div>
+        </Box>
+
         <TextField
           name="zone"
           variant="outlined"
@@ -118,6 +128,7 @@ export default function Form() {
           onChange={(e) => {
             setFormData({ ...formData, [e.target.name]: e.target.value });
           }}
+          margin="normal"
         />
         <Button
           variant="contained"
@@ -125,6 +136,7 @@ export default function Form() {
           size="large"
           type="submit"
           onClick={handlePost}
+          sx={{ marginBottom: "8px" }}
         >
           Submit
         </Button>
