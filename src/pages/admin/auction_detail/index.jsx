@@ -4,7 +4,7 @@ import {
   TextField,
   Button,
   CircularProgress,
-} from "@material-ui/core";
+} from "@mui/material";
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
