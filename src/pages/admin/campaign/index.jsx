@@ -24,14 +24,17 @@ export default function Campaign() {
 
       {/* toolbar box to search or filter somthing */}
       <Box className="homepages__container">
+        <Typography className="pages_title">Active Campaign</Typography>
         <Box className="container_left">
-          <Typography variant="h6">Active Campaign</Typography>
-
           <MySearch />
+          <Button
+            color="secondary"
+            variant="contained"
+            startIcon={<TuneIcon />}
+          >
+            Filter
+          </Button>
         </Box>
-        <Button color="secondary" variant="contained" startIcon={<TuneIcon />}>
-          Filter
-        </Button>
       </Box>
 
       {/* an box to contain the body */}

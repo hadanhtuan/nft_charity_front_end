@@ -27,37 +27,49 @@ export default function MyBalance() {
     <Card sx={{ flexGrow: "1" }}>
       <Box
         className="balance"
-        sx={{ display: "flex", flexDirection: "column", padding: "20px" }}
+        sx={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          padding: "20px",
+        }}
       >
         {/* box_header */}
         <Box
           sx={{
-            display: `flex`,
-            flexDirection: `row`,
-            justifyContent: `space-between`,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
-          <Box>
-            <Typography variant="h6">Balance</Typography>
-          </Box>
-          <Box>
-            <Button>add</Button>
-          </Box>
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: 700, textTransform: "uppercase" }}
+          >
+            Your Wallet
+          </Typography>
+          <Button
+            className="theButton"
+            variant="contained"
+            sx={{ fontWeight: 700 }}
+          >
+            add
+          </Button>
         </Box>
 
         {/*usd unit box */}
-        <Box sx={{ display: `flex` }}>
-          <Typography variant="subtitle2" sx={{ color: `#5A55D2` }}>
+        <Box sx={{ display: "flex", gap: 1 }}>
+          <Typography variant="body2" sx={{ color: "#5A55D2" }}>
             $
           </Typography>
-          <Typography variant="subtitle2" sx={{ marginLeft: `4px` }}>
-            ETH
-          </Typography>
+          <Typography variant="body2">ETH</Typography>
         </Box>
-        <Typography variant="h5" sx={{ color: `#5A55D2` }}>
+        <Typography variant="h4" sx={{ color: "#5A55D2", fontWeight: 700 }}>
           {balance}
         </Typography>
-        <img src={cardbackground} alt="" />
+        <img src={cardbackground} alt="balance_img" />
       </Box>
     </Card>
   );

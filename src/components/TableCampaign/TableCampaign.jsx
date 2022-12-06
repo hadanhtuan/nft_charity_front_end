@@ -77,7 +77,12 @@ export default function MyTableCampaign() {
     },
   ];
   return isLoading ? (
-    <CircularProgress />
+    <Box sx={{ display: "flex", gap: 1 }}>
+      <Typography variant="h6" gutterBottom>
+        Waiting...
+      </Typography>
+      <CircularProgress />
+    </Box>
   ) : (
     <Card className="tableCampaign">
       <Box className="tableCampaign__container">

@@ -10,7 +10,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 
-import logo from "../../assets/litecoin.svg";
+import logo from "../../assets/weshare.svg";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import CampaignIcon from "@mui/icons-material/Campaign";
 import CreateIcon from "@mui/icons-material/Create";
@@ -18,6 +18,8 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import bottomSideBar from "../../assets/bottomSidebarImage.svg";
 import { useHistory, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { lightGreen } from "@mui/material/colors";
+import MyBalance from "../Balance/Balance";
 const drawerWidth = 240;
 
 export default function MySidebar() {
@@ -55,7 +57,7 @@ export default function MySidebar() {
         {/* start phan header */}
         <Box
           className="drawer__header"
-          sx={{ display: `flex`, height: `100px`, margin: `0 auto` }}
+          sx={{ display: "flex", height: "300px", margin: `0 auto` }}
         >
           <Box
             className="drawer__header__logo"
@@ -66,10 +68,20 @@ export default function MySidebar() {
             }}
           >
             <Box className="logo_img">
-              <img src={logo} alt="logo" />
+              <img src={logo} alt="logo" style={{ width: 40, height: 40 }} />
             </Box>
             <Box className="logo_title">
-              <Typography ml={1}>NFT CHARITY</Typography>
+              <Typography
+                variant="h5"
+                ml={1}
+                sx={{
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: 5,
+                }}
+              >
+                WESHARE
+              </Typography>
             </Box>
           </Box>
         </Box>
@@ -169,14 +181,14 @@ export default function MySidebar() {
         <Box
           className="footer"
           sx={{
-            display: `flex`,
-            flex: `1`,
-            alignItems: `flex-end`,
-            justifyContent: `center`,
-            paddingBottom: `10px`,
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <img src={bottomSideBar} alt="anhBottom" />
+          <MyBalance />
         </Box>
       </Drawer>
     </Box>

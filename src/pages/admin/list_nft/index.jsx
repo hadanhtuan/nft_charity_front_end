@@ -22,37 +22,35 @@ export default function List_NFT() {
   console.log(nftList);
   return (
     <Box className="homepages">
-      <Box className="homepages__container">
+      <Typography className="pages_title" variant="h5">
+        Manage NFT
+      </Typography>
+      <Box className="listNFT_container">
         <Box className="container_left">
-          <Typography variant="h6">Active NFT</Typography>
           <MySearch />
         </Box>
         <Button color="secondary" variant="contained" startIcon={<TuneIcon />}>
           Filter
         </Button>
       </Box>
-      {isLoading ? (
-        <CircularProgress />
-      ) : (
-        <Box className="nft_list">
-          {nftList.map((item, id) => (
+
+      <Box className="nft_list">
+        {isLoading ? (
+          <Box sx={{ display: "flex" }}>
+            <Typography variant="h5">Loading...</Typography>
+            <CircularProgress />
+          </Box>
+        ) : (
+          nftList.map((item, id) => (
             <MyNFTInfo
               image={item.image}
               name={item.name}
               description={item.description}
               price={item.startPrice}
             />
-          ))}
-          {nftList.map((item, id) => (
-            <MyNFTInfo
-              image={item.image}
-              name={item.name}
-              description={item.description}
-              price={item.startPrice}
-            />
-          ))}
-        </Box>
-      )}
+          ))
+        )}
+      </Box>
     </Box>
   );
 }

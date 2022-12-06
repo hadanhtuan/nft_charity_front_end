@@ -2,6 +2,43 @@
 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 22px;
+    gap: 30px;
+}
+
+.homepages
+{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pages
+{
+    &_title
+    {
+        font-weight: 700 !important;
+        ;
+        text-transform: uppercase;
+    }
+}
+
+
+
+.listNFT_container
+{
+    display: flex;
+    gap: 15px;
+
+    .container_left
+    {}
+}
+
+.nft
+{
+    &_list
+    {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
 }

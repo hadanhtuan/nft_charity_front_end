@@ -1,6 +1,8 @@
 $row_gap :15px;
 $widgetItem_column_gap: 50px;
-$page_gap: 100px;
+$page_gap: 12px;
+
+
 
 .homepages
 {
@@ -8,19 +10,27 @@ $page_gap: 100px;
     max-height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 16px 20px;
-    gap: $row_gap;
+    padding: 16px 0px;
+
+    .pages_title
+    {
+        font-weight: 700 !important;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        font-size: 20px;
+    }
 
     &_container
     {
         width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         gap: $page_gap;
 
-        .homepages_left
+        .homepages_first
         {
-            flex-grow: 1;
+            flex: 1;
             display: flex;
             flex-direction: column;
             gap: $row_gap;
@@ -33,19 +43,14 @@ $page_gap: 100px;
             }
         }
 
-        .homepages_right
-        {
+        .homepages_second
+        {}
 
-            display: flex;
-            flex-direction: column;
-            gap: $row_gap;
+        .recentAct
+        {}
 
-
-        }
     }
 
-    .recentAct
-    {}
 
 
 

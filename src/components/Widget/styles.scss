@@ -1,5 +1,7 @@
 .WidgetItem
 {
+    width: 100%;
+    border-radius: 16px !important;
 
     .Item_container
     {
@@ -13,16 +15,28 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            gap: 5px;
+
+            .widget_icon
+            {
+                width: 40px;
+            }
 
             .item_title
             {
                 display: flex;
                 gap: 3px;
+
+                .title_unit
+                {
+                    font-weight: 700;
+                }
             }
 
             .widget_icon
             {
-                width: 30px;
+                width: 40px;
+
             }
 
 

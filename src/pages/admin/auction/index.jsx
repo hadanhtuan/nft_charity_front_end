@@ -60,56 +60,48 @@ export default function Index() {
   };
 
   return (
-    <Box className="page">
-      {/* appbar */}
-      {/* <MyAppBar type="Auction" /> */}
-      {/* noi dung */}
-      <Box className="page_content">
-        <Grid
-          container
-          disableEqualOverflow={true}
-          md={12}
+    <Box className="homepages">
+      <Typography className="pages_title">Active Auction</Typography>
+      <Box className="homepages_container">
+        <Box
           sx={{
-            display: `flex`,
-            flexDirection: `column`,
-            padding: `20px 40px 15px 40px`,
+            display: "flex",
+            justifyContent: "space-between",
           }}
         >
-          {/* start all content in here */}
-
-          {/* toolbar box to search or filter somthing */}
-          <Box className="toolbar">
-            <Box className="toolbar_left">
-              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                Active Auction
-              </Typography>
-              <Typography variant="subtitle2" sx={{ fontSize: "0.8rem" }}>
-                274 Auction
-              </Typography>
-              <MySearch />
-            </Box>
+          <Box sx={{ display: "flex", gap: "12px" }}>
+            <MySearch />
             <Button
+              color="secondary"
               variant="contained"
               startIcon={<TuneIcon />}
-              onClick={handleClickOpen}
             >
-              Create Auction
+              Filter
             </Button>
           </Box>
+          <Button
+            variant="contained"
+            startIcon={<TuneIcon />}
+            onClick={handleClickOpen}
+          >
+            Create Auction
+          </Button>
+        </Box>
 
-          {/* an box to contain the body */}
-          <Box sx={{ marginTop: `25px` }}>
-            <Grid container md={12} spacing={4}>
-              <Grid item md={6}>
-                <MyTableCampaign setIds={setIds} auctions={auctions} />
-              </Grid>
-              <Grid item md>
-                <MyTableNFT setIds={setIds} auctions={auctions} />
-              </Grid>
+        {/* an box to contain the body */}
+        <Box>
+          <Grid container md={12} spacing={4}>
+            <Grid item md={6}>
+              <MyTableCampaign setIds={setIds} auctions={auctions} />
             </Grid>
-          </Box>
-        </Grid>
+            <Grid item md>
+              <MyTableNFT setIds={setIds} auctions={auctions} />
+            </Grid>
+          </Grid>
+        </Box>
       </Box>
+
+      {/* the dialog */}
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Create Auction</DialogTitle>
         <DialogContent>

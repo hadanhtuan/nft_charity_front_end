@@ -1,32 +1,35 @@
 import * as React from "react";
 
 import { Card, Box, CssBaseline, Typography, Button } from "@mui/material";
-
 import chart from "../../assets/Graph.svg";
+import styled from "@emotion/styled";
+const StyledTransactionOverview = styled(Card)`
+  padding: 20px;
+  border-radius: 10px;
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+`;
 
-import "./styles.css";
 export default function MyTransactionOverview() {
   return (
-    <Card sx={{ width: "100%" }}>
-      <Box className="transactionOverview" sx={{ padding: " 15px 24px" }}>
-        {/* box_header */}
+    <StyledTransactionOverview>
+      <Box className="container">
         <Box
           sx={{
             flex: 1,
-            display: `flex`,
-            flexDirection: `row`,
-            justifyContent: `space-between`,
+            display: "flex",
           }}
         >
-          {/* Box to contain title of card */}
-          <Box sx={{ display: `flex`, flex: `1` }}>
+          <Box sx={{ flex: 1 }}>
             <Typography variant="h6">Transaction Overview</Typography>
           </Box>
 
           {/* box to group btn  */}
-          <Box
-            sx={{ display: `flex`, flex: `1`, justifyContent: `space-between` }}
-          >
+          <Box sx={{ display: "flex", gap: 2 }}>
             <Button variant="outlined">ALL</Button>
             <Button variant="outlined">1M</Button>
             <Button variant="outlined">6M</Button>
@@ -36,10 +39,16 @@ export default function MyTransactionOverview() {
         </Box>
 
         {/* box to contain chart */}
-        <Box sx={{ display: "flex" }}>
-          <img className="chart" src={chart} alt="" />
+        <Box
+          sx={{
+            width: "100%",
+            height: "300px",
+            overflow: "hidden",
+          }}
+        >
+          <img className="chart" src={chart} alt="anh_chart" />
         </Box>
       </Box>
-    </Card>
+    </StyledTransactionOverview>
   );
 }

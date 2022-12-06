@@ -5,6 +5,9 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
 import admin_home from "./pages/admin/admin_home";
 import campaign from "./pages/admin/campaign";
 import auction from "./pages/admin/auction";
@@ -67,39 +70,47 @@ function App() {
     web3Handler();
     dispatch(fetchSolidity());
   });
+  // dark theme
+  const darkTheme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  });
+
   return (
     <Router>
-      <Box className="app">
-        <Box className="left_side">
-          <MySidebar />
+      <ThemeProvider theme={darkTheme}>
+        <Box className="app">
+          <Box className="left_side">
+            <MySidebar />
+          </Box>
+          <Box className="right_side">
+            <Container className="pages" maxWidth="xl">
+              <Switch>
+                <Route
+                  path="/"
+                  exact
+                  component={() => <Redirect to="/admin" />}
+                />
+                <Route path="/admin" exact component={admin_home} />
+                <Route path="/admin/campaign" exact component={campaign} />
+                <Route path="/admin/auction" exact component={auction} />
+                <Route path="/admin/list_nft" exact component={list_nft} />
+                <Route
+                  path="/admin/list_auction"
+                  exact
+                  component={list_auction}
+                />
+                <Route
+                  path="/admin/list_auction/:nft_id"
+                  exact
+                  component={auction_detail}
+                />
+              </Switch>
+            </Container>
+          </Box>
         </Box>
-        <Box className="right_side">
-          <MyAppBar />
-          <Container className="pages" maxWidth="xl">
-            <Switch>
-              <Route
-                path="/"
-                exact
-                component={() => <Redirect to="/admin" />}
-              />
-              <Route path="/admin" exact component={admin_home} />
-              <Route path="/admin/campaign" exact component={campaign} />
-              <Route path="/admin/auction" exact component={auction} />
-              <Route path="/admin/list_nft" exact component={list_nft} />
-              <Route
-                path="/admin/list_auction"
-                exact
-                component={list_auction}
-              />
-              <Route
-                path="/admin/list_auction/:nft_id"
-                exact
-                component={auction_detail}
-              />
-            </Switch>
-          </Container>
-        </Box>
-      </Box>
+      </ThemeProvider>
     </Router>
   );
 }

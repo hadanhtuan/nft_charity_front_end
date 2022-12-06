@@ -1,48 +1,67 @@
-$NFT_width: 280px;
-$NFT_height: $NFT_width+50px;
+    $NFT_width: 280px;
+    $NFT_height: $NFT_width+20px;
 
-.MyNFTInfo
-{
-    max-width: $NFT_width;
-    border-radius: 16px;
-    background-color: #fff;
-    box-shadow: -1px 1px 7px 3px rgba(0, 0, 0, 0.12);
-    -webkit-box-shadow: -1px 1px 7px 3px rgba(0, 0, 0, 0.12);
-    -moz-box-shadow: -1px 1px 7px 3px rgba(0, 0, 0, 0.12);
-
-    &__container
+    .MyNFTInfo
     {
-        display: flex;
-        flex-direction: column;
-
-    }
-
-    &__headerImg
-    {
-
         width: $NFT_width;
-        height: $NFT_height;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        border-top-left-radius: 16px;
-        border-top-right-radius: 16px;
 
-        img
+        &__headerImg
         {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 0 !important;
 
-            &:hover
+            width: $NFT_width;
+            height: $NFT_height;
+            overflow: hidden;
+
+            img
             {
-                // zoom in
-                transform: scale(1.1);
-                transition: all 0.3s ease-in-out;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+
+                &:hover
+                {
+                    // zoom in
+                    transform: scale(1.1);
+                    transition: all 0.3s ease-in-out;
+                }
             }
+
         }
 
+        .MyNFTInfo__content
+        {
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+
+            .NFTContent_ID
+            {
+                font-size: 1rem;
+                font-weight: 700;
+                letter-spacing: 5px;
+
+            }
+
+            .NFTContent_NAME
+            {
+                font-weight: 700;
+                letter-spacing: 5px;
+                width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .NFTContent_PRICE
+            {
+                font-weight: 700;
+                color: rgb(159, 202, 147);
+                justify-self: flex-end;
+            }
+
+
+
+
+        }
+
+
     }
-}

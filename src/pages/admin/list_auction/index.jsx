@@ -115,28 +115,23 @@ const List_Auc = () => {
   ];
 
   return (
-    <Box className="page">
-      {/* <MyAppBar type="Auction" /> */}
+    <>
+      <Box className="homepages">
+        <Typography className="pages_title">Active Campaign</Typography>
 
-      <Box className="page_content" sx={{ padding: `20px 40px 15px 40px` }}>
-        <Box className="toolbar">
-          <Box className="toolbar_left">
-            <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-              Active Campaign
-            </Typography>
-            <Typography variant="subtitle2" sx={{ fontSize: "0.8rem" }}>
-              274 Campaigns
-            </Typography>
-            <MySearch />
-          </Box>
+        <Box sx={{ display: "flex", gap: "12px" }}>
+          <MySearch />
           <Button variant="contained" startIcon={<TuneIcon />}>
             Filter
           </Button>
         </Box>
 
-        <Box sx={{ marginTop: `25px` }}>
+        <Box>
           {isLoading ? (
-            <CircularProgress />
+            <Box sx={{ display: "flex", gap: "12px", alignItems: "center" }}>
+              <Typography variant="h6">Loading...</Typography>
+              <CircularProgress />
+            </Box>
           ) : (
             <Card
               sx={{
@@ -161,7 +156,7 @@ const List_Auc = () => {
           )}
         </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 

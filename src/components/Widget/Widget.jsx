@@ -145,18 +145,18 @@ export default function MyWidget({ type }) {
 
           {/* start this is a box to contain money transfer */}
           <Box className="item_title">
-            <Typography variant="subtitle2" fontWeight={500}>
+            <Typography className="title_unit" variant="body1">
               {data.coinTitle}
             </Typography>
-            <img src={exchangeIcon} alt="" />
-            <Typography variant="subtitle2" fontWeight={500}>
+            <img src={exchangeIcon} alt="exchange_icon" />
+            <Typography className="title_unit" variant="body1">
               USD
             </Typography>
           </Box>
           {/* end money transfer */}
 
           {/* money value */}
-          <Typography variant="h5" sx={{ fontWeight: `700` }}>
+          <Typography variant="h5" sx={{ fontWeight: 700 }}>
             {data.weirdNumber}
           </Typography>
 
@@ -167,7 +167,7 @@ export default function MyWidget({ type }) {
                 <img src={upGrowth} alt="data_up" style={{ margin: `0 4px` }} />
                 <Typography
                   sx={{
-                    fontSize: `14px`,
+                    fontSize: `18px`,
                     color: `#00DEA3`,
                   }}
                 >
@@ -183,7 +183,7 @@ export default function MyWidget({ type }) {
                 />
                 <Typography
                   sx={{
-                    fontSize: `14px`,
+                    fontSize: `18px`,
                     color: `#F23985`,
                   }}
                 >

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, CssBaseline } from "@mui/material";
+import { Box, CssBaseline, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
 import MySidebar from "../../../components/sidebar/SideBar";
@@ -12,22 +12,20 @@ import "./styles.scss";
 export default function Index() {
   return (
     <Box className="homepages">
+      <Typography className="pages_title">Admin Home</Typography>
       <Box className="homepages_container">
-        <Box className="homepages_left">
+        <Box className="homepages_first">
           <Box className="widgets">
             <MyWidget type="Bitcoin" />
             <MyWidget type="Litecoin" />
             <MyWidget type="Ethereum" />
+            <MyWidget type="BinanceCoin" />
           </Box>
-          <MyTransactionOverview />
         </Box>
-        <Box className="homepages_right">
-          <MyWidget type="BinanceCoin" />
-          <MyBalance />
+        <MyTransactionOverview />
+        <Box className="recentAct">
+          <MyRecentAct />
         </Box>
-      </Box>
-      <Box className="recentAct">
-        <MyRecentAct />
       </Box>
     </Box>
   );

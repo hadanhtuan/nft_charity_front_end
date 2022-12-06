@@ -5,19 +5,19 @@ import SearchIcon from "@mui/icons-material/Search";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
-  backgroundColor: alpha(theme.palette.common.white, 1),
+  backgroundColor: alpha(theme.palette.common.white, 0.12),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.5),
+    backgroundColor: alpha(theme.palette.common.white, 0.35),
   },
-  marginLeft: 0,
-  height: "40px",
+  height: "45px",
   width: "100%",
+  display: "flex",
+  alignItems: "center",
   [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
     width: "auto",
   },
   border: "1px solid #E5E5E5",
-  borderRadius: "16px",
+  borderRadius: "12px",
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
@@ -40,9 +40,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "15ch",
+      width: "20ch",
       "&:focus": {
-        // width: "22ch",
+        // width: "30ch",
       },
     },
   },
@@ -50,11 +50,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function MySearch() {
   return (
-    <Search>
-      <SearchIconWrapper>
+    <Search className="theSearch">
+      <SearchIconWrapper className="searchIcon">
         <SearchIcon />
       </SearchIconWrapper>
       <StyledInputBase
+        className="searchInput"
         placeholder="Search…"
         inputProps={{ "aria-label": "search" }}
       />
