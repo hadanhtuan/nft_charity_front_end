@@ -43,6 +43,8 @@ export default function List_NFT() {
         ) : (
           nftList.map((item, id) => (
             <MyNFTInfo
+              key={id}
+              id={item.id}
               image={item.image}
               name={item.name}
               description={item.description}
