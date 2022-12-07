@@ -22,7 +22,7 @@ import MarketplaceAddress from "./utils/contractsData/Marketplace-address.json";
 import NFTAbi from "./utils/contractsData/NFT.json";
 import NFTAddress from "./utils/contractsData/NFT-address.json";
 import { useDispatch, useSelector } from "react-redux";
-import { CONNECT_ACC, FETCH_SOLIDITY } from "./constraint/actionTypes";
+import { CONNECT_ACC, FETCH_SOLIDITY } from "./constraint/actionTypes"; 
 import { fetchSolidity } from "./actions/solidity";
 import MySidebar from "./components/sidebar/SideBar";
 
