@@ -64,23 +64,14 @@ const List_Auc = () => {
       width: 120,
     },
     {
-      field: "img2_url",
+      field: "img1_url",
       headerName: "Image",
-      width: 200,
+      width: 250,
       renderCell: (params) => {
         return (
-          <img
-            style={{
-              width: "150px",
-              height: "150px",
-              margin: "3px",
-              objectFit: "cover",
-              borderRadius: "20px",
-              padding: "10px",
-            }}
-            src={params.row.img2_url}
-            alt=""
-          />
+          <Box className="imgContainer">
+            <img src={params.row.img1_url} alt="Campaign_Image" />
+          </Box>
         );
       },
     },

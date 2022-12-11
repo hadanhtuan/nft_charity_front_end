@@ -33,7 +33,7 @@ export default function MyTableCampaign() {
       width: 150,
     },
     {
-      field: "desc",
+      field: "description",
       headerName: "Description",
       width: 150,
     },

@@ -41,18 +41,12 @@ export default function MyTableCampaign({ setIds, auctions }) {
     {
       field: "img1_url",
       headerName: "Image",
-      width: 150,
+      width: 250,
       renderCell: (params) => {
         return (
-          <img
-            style={{
-              width: "150px",
-              height: "150px",
-              margin: "3px",
-            }}
-            src={params.row.img1_url}
-            alt=""
-          />
+          <Box className="imgContainer">
+            <img src={params.row.img1_url} alt="Campaign_Image" />
+          </Box>
         );
       },
     },

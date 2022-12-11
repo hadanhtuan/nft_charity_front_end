@@ -13,7 +13,7 @@ import campaign from "./pages/admin/campaign";
 import auction from "./pages/admin/auction";
 import list_nft from "./pages/admin/list_nft";
 import list_auction from "./pages/admin/list_auction";
-import auction_detail from "./pages/admin/auction_detail";
+import auction_detail from "./pages/admin/auction_detail/AuctionDetail";
 
 import { ethers } from "ethers";
 import Web3 from "web3";

@@ -20,7 +20,7 @@ export default function MyTableCampaign({ setIds, auctions }) {
   const list = nftList.filter((nft) => {
     let flag = true;
     auctions.forEach((auc) => {
-      if (auc.nft_id == nft.id) {
+      if (auc.nft_id == nft.id ) {
         flag = false;
       }
     });
@@ -38,10 +38,10 @@ export default function MyTableCampaign({ setIds, auctions }) {
 
   const columns = [
     {
-      field: "id",
+      field: "tokenId",
       headerName: "NFT ID",
       editable: true,
-      width: 10,
+      width: 60,
     },
     {
       field: "name",
@@ -52,25 +52,20 @@ export default function MyTableCampaign({ setIds, auctions }) {
     {
       field: "image",
       headerName: "Image",
-      width: 150,
+      width: 200,
       renderCell: (params) => {
         return (
-          <img
-            style={{
-              width: "150px",
-              height: "150px",
-              margin: "3px",
-            }}
-            src={`data:image/png;base64,${toBase64(
+          <Box className="imgContainer">
+            <img src={`data:image/png;base64,${toBase64(
               params.row.image.buffer.data
             )}`}
-            alt=""
-          />
+            alt="" />
+          </Box>
         );
       },
     },
     {
-      field: "seller",
+      field: "creator",
       headerName: "Artist",
       editable: true,
       width: 100,
@@ -78,7 +73,7 @@ export default function MyTableCampaign({ setIds, auctions }) {
   ];
   const handleOnCellClick = (params) => {
     setIds((prev) => {
-      return { ...prev, nftId: params.row.id };
+      return { ...prev, nftId: params.row.tokenId };
     });
   };
 
