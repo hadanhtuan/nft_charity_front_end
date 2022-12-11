@@ -1,14 +1,15 @@
-import React from "react";
-import { Box, CssBaseline, Typography } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import React from 'react';
+import { Box, CssBaseline, Typography } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2/Grid2';
 
-import MySidebar from "../../../components/sidebar/SideBar";
-import MyAppBar from "../../../components/appbar/AppBar";
-import MyWidget from "../../../components/Widget/Widget";
-import MyTransactionOverview from "../../../components/TransactionOverview/Transaction";
-import MyBalance from "../../../components/Balance/Balance";
-import MyRecentAct from "../../../components/RecentActivities/Recent";
-import "./styles.scss";
+import MySidebar from '../../../components/sidebar/SideBar';
+import MyAppBar from '../../../components/appbar/AppBar';
+import MyWidget from '../../../components/Widget/Widget';
+import MyTransactionOverview from '../../../components/TransactionOverview/Transaction';
+import MyBalance from '../../../components/Balance/Balance';
+import MyRecentAct from '../../../components/RecentActivities/Recent';
+import Chart from '../../../components/Chart/Chart';
+import './styles.scss';
 export default function Index() {
   return (
     <Box className="homepages">
@@ -22,10 +23,11 @@ export default function Index() {
             <MyWidget type="BinanceCoin" />
           </Box>
         </Box>
-        <MyTransactionOverview />
-        <Box className="recentAct">
+        {/* <MyTransactionOverview /> */}
+        <Chart />
+        {/* <Box className="recentAct">
           <MyRecentAct />
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );
