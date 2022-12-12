@@ -10,6 +10,9 @@ import MyBalance from '../../../components/Balance/Balance';
 import MyRecentAct from '../../../components/RecentActivities/Recent';
 import Chart from '../../../components/Chart/Chart';
 import './styles.scss';
+import TableTransaction from '../../../components/TableTransaction/TableTransaction';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 export default function Index() {
   return (
     <Box className="homepages">
@@ -25,9 +28,10 @@ export default function Index() {
         </Box>
         {/* <MyTransactionOverview /> */}
         <Chart />
-        {/* <Box className="recentAct">
-          <MyRecentAct />
-        </Box> */}
+        <Box className="recentAct">
+          {/* <MyRecentAct /> */}
+          <TableTransaction />
+        </Box>
       </Box>
     </Box>
   );
