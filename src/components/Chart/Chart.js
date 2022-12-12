@@ -12,9 +12,10 @@ import {
 } from 'chart.js';
 import { CircularProgress, createTheme, makeStyles, ThemeProvider } from '@material-ui/core';
 import useStyles from './styles';
-import { ADDRESS_WALLET, getHistoryTrans } from '../../apis/getHistoryTrans';
 import { fromWei } from '../../utils';
 import { Button } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { ADDRESS_WALLET } from '../../apis/getHistoryTrans';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -45,32 +46,27 @@ function Chart() {
   const [historyData, setHistoryData] = useState();
   const [days, setDays] = useState(30);
   const [flag, setFlag] = useState(false);
+  const historyTrans = useSelector((state) => state.transHistory.historyTrans);
 
   const classes = useStyles();
 
-  const fetchHistoryData = async () => {
-    const data = await getHistoryTrans();
-    console.log(data);
-    setFlag(true);
-    const result = data.data.result;
-    console.log(result);
+  const fetchHistoryData = () => {
     let categoryTime = [];
-    result.forEach((trans) => {
+    historyTrans.forEach((tran) => {
       if (
-        trans.timeStamp > Date.now() / 1000 - days * 60 * 60 * 24 &&
-        trans.to.toLowerCase() == ADDRESS_WALLET.toLowerCase()
+        tran.timeStamp > Date.now() / 1000 - days * 60 * 60 * 24 &&
+        tran.to.toLowerCase() == ADDRESS_WALLET.toLowerCase()
       ) {
-        categoryTime.push(trans);
+        categoryTime.push(tran);
       }
     });
-    setHistoryData(categoryTime);
+    return categoryTime;
   };
 
   useEffect(() => {
-    fetchHistoryData();
-  }, [days]);
-
-  console.log(historyData);
+    setHistoryData(fetchHistoryData());
+    setFlag(true);
+  }, [days, historyData]);
 
   const darkTheme = createTheme({
     palette: {
@@ -90,8 +86,8 @@ function Chart() {
           <>
             <Line
               data={{
-                labels: historyData.map((trans) => {
-                  let date = new Date(trans.timeStamp * 1000);
+                labels: historyData.map((tran) => {
+                  let date = new Date(tran.timeStamp * 1000);
                   let time =
                     date.getHours() > 12
                       ? `${date.getHours() - 12}:${date.getMinutes()} PM`
@@ -101,7 +97,7 @@ function Chart() {
 
                 datasets: [
                   {
-                    data: historyData.map((trans) => fromWei(trans.value)),
+                    data: historyData.map((tran) => fromWei(tran.value)),
                     label: `Amount ( Past ${days} Days ) in ETH`,
                     borderColor: '#EEBC1D',
                   },

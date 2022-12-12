@@ -1,10 +1,4 @@
-import {
-  FETCH_CAMP,
-  EDIT_CAMP,
-  START_LOADING_CAMPAIGN,
-  PICK_CAMP,
-  CREATE_CAMP,
-} from "../constraint/actionTypes";
+import { FETCH_CAMP, EDIT_CAMP, START_LOADING_CAMPAIGN, PICK_CAMP, CREATE_CAMP } from '../constraint/actionTypes';
 
 const initState = {
   campaigns: [],
@@ -37,9 +31,7 @@ export default (state = initState, action) => {
     case EDIT_CAMP:
       return {
         ...state,
-        campaigns: state.campaigns.map((camp) =>
-          camp.id == action.payload.id ? action.payload : camp
-        ),
+        campaigns: state.campaigns.map((camp) => (camp.id == action.payload.id ? action.payload : camp)),
         isLoading: false,
       };
 
