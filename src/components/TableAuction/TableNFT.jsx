@@ -20,7 +20,7 @@ export default function MyTableCampaign({ setIds, auctions }) {
   const list = nftList.filter((nft) => {
     let flag = true;
     auctions.forEach((auc) => {
-      if (auc.nft_id == nft.id ) {
+      if (auc.nft_id == nft.id || nft.serverOwn == false) {
         flag = false;
       }
     });
