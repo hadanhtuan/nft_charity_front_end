@@ -75,11 +75,10 @@ export default function MySearch() {
       if (debounced == '') {
         const linkURL = window.location.href.split('/');
         let lastLink = linkURL[linkURL.length - 1];
-        if (lastLink != 'list_nft' && lastLink != 'campaign' && lastLink != 'list_auction') {
-          history.push(`/admin/search/@all`);
-        } else {
-          return;
+        if (lastLink != 'list_nft' && lastLink != 'campaign' && lastLink != 'list_auction' && lastLink != '') {
+          history.push(`/admin/search/${lastLink}`);
         }
+        return;
       }
     }
   }, [debounced]);
