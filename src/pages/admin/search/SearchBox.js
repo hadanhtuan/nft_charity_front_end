@@ -8,13 +8,8 @@ import useDebounce from '../../../components/SearchBar/useDebounce';
 
 function SearchBox() {
   const { inputText } = useParams();
-  const [seachData, setSearchData] = useState('');
 
   const nftList = useSelector((state) => state.solidity.nftList);
-
-  useEffect(() => {
-    setSearchData(inputText);
-  }, [inputText]);
 
   const [value, setValue] = useState('one');
   const handleChange = (event, newValue) => {

@@ -53,11 +53,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function MySearch() {
-  const [valueInput, setValueInput] = useState('');
+  const [valueInput, setInputValue] = useState('');
 
   const history = useHistory();
 
-  const debounced = useDebounce(valueInput, 800);
+  const debounced = useDebounce(valueInput, 1000);
 
   const handleOnChange = (e) => {
     const searchValue = e.target.value;
@@ -67,7 +67,11 @@ export default function MySearch() {
   };
 
   useEffect(() => {
-    history.push(`/admin/search/${debounced}`);
+    if (debounced != '') {
+      history.push(`/admin/search/${debounced}`);
+    } else {
+      return;
+    }
   }, [debounced]);
   return (
     <Search className="theSearch" onChange={handleOnChange}>
