@@ -44,7 +44,7 @@ const chartDays = [
 
 function Chart() {
   const [historyData, setHistoryData] = useState();
-  const [days, setDays] = useState(1);
+  const [days, setDays] = useState(30);
   const [flag, setFlag] = useState(false);
   const historyTrans = useSelector((state) => state.transHistory.historyTrans);
 
@@ -70,7 +70,6 @@ function Chart() {
     console.log(data);
     setHistoryData(data);
     setFlag(true);
-    setDays(30);
   }, [days, historyTrans]);
 
   const darkTheme = createTheme({

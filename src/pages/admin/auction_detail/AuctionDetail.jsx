@@ -13,35 +13,27 @@ import {
   Tooltip,
   Typography,
   CircularProgress,
-} from "@mui/material";
-import React, { useState, useEffect } from "react";
-import { useParams, useHistory, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { getAuctionById } from "../../../actions/auction";
-import { toBase64, toWei, fromWei } from "../../../utils";
+} from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { useParams, useHistory, Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAuctionById } from '../../../actions/auction';
+import { toBase64, toWei, fromWei } from '../../../utils';
 
-import styled from "styled-components";
-import Carousel from "react-material-ui-carousel";
-import SubjectIcon from "@mui/icons-material/Subject";
-import SegmentIcon from "@mui/icons-material/Segment";
+import styled from 'styled-components';
+import Carousel from 'react-material-ui-carousel';
+import SubjectIcon from '@mui/icons-material/Subject';
+import SegmentIcon from '@mui/icons-material/Segment';
 // import header icon
-import ShareIcon from "@mui/icons-material/Share";
-import CropFreeIcon from "@mui/icons-material/CropFree";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import {
-  ExpandLess,
-  ExpandMore,
-  QueryBuilder,
-  TimelineRounded,
-} from "@mui/icons-material";
-import ListIcon from "@mui/icons-material/List";
-import Countdown from "../../../components/Countdown/Countdown";
+import ShareIcon from '@mui/icons-material/Share';
+import CropFreeIcon from '@mui/icons-material/CropFree';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { ExpandLess, ExpandMore, QueryBuilder, TimelineRounded } from '@mui/icons-material';
+import ListIcon from '@mui/icons-material/List';
+import Countdown from '../../../components/Countdown/Countdown';
 
-import {
-  GetUSDExchangeRate,
-  GetETHExchangeRate,
-} from "../../../apis/ETH_price";
-import * as api from '../../../apis'
+import { GetUSDExchangeRate, GetETHExchangeRate } from '../../../apis/ETH_price';
+import * as api from '../../../apis';
 
 // both page
 const AuctionDetailStyle = styled(Box)`
@@ -102,8 +94,8 @@ const ImgSlider = ({ items }) => {
         indicators
         cycleNavigation={true}
         sx={{
-          ".css-1m9128y": {
-            display: "none",
+          '.css-1m9128y': {
+            display: 'none',
           },
         }}
       >
@@ -326,7 +318,7 @@ const StyledCampaignInfo = styled(Card)`
       font-size: 1.5rem;
       color: black;
 
-      background: ${props => !props.isStarted ? '#dddddd': 'linear-gradient(90deg, #ff5f6d 0%, #ffc371 100%)'}
+      background: ${(props) => (!props.isStarted ? '#dddddd' : 'linear-gradient(90deg, #ff5f6d 0%, #ffc371 100%)')}
       &:hover {
         background: linear-gradient(90deg, #ff5f6d 0%, #ffc371 30%);
         color: lightgreen;
@@ -345,16 +337,16 @@ const CampaignInfo = ({
   date,
   dateDisplay,
   timeout,
-  isStarted
+  isStarted,
 }) => {
   const [price, setPrice] = useState(0);
-  const [ethPrice, setEthPrice] = useState("");
-  const [usdExRate, setUsdExRate] = useState(); 
+  const [ethPrice, setEthPrice] = useState('');
+  const [usdExRate, setUsdExRate] = useState();
 
   useEffect(() => {
     GetUSDExchangeRate().then((res) => {
       setUsdExRate(parseFloat(res));
-      console.log("usd", parseFloat(res));
+      console.log('usd', parseFloat(res));
     });
     handlePriceETH(highestBid);
   }, []);
@@ -378,15 +370,19 @@ const CampaignInfo = ({
     <StyledCampaignInfo className="campaign_info" isStarted={isStarted}>
       <Box className="infoContainer">
         <Typography className="info_date" variant="h6">
-          Sale ends {dateDisplay} {"    "}
+          Sale ends {dateDisplay} {'    '}
           <Typography color="pink" variant="body1">
-            {timeout && "Time Out"}
+            {timeout && 'Time Out'}
           </Typography>
         </Typography>
         <Box className="info_time">
-        {!timeout && isStarted ? <Countdown date={date} />:  <Typography color="pink" variant="h6">
-            Auction Ended
-          </Typography>}
+          {!timeout && isStarted ? (
+            <Countdown date={date} />
+          ) : (
+            <Typography color="pink" variant="h6">
+              Auction Ended
+            </Typography>
+          )}
         </Box>
         <Divider className="divider" />
         <Box className="info_price">
@@ -408,9 +404,8 @@ const CampaignInfo = ({
               Highest bidder
             </Typography>
             <Typography className="price_title" variant="h5">
-              {`${highestBidder.slice(0, 5) + "..." + highestBidder.slice(38, 42)}`}
+              {`${highestBidder.slice(0, 5) + '...' + highestBidder.slice(38, 42)}`}
             </Typography>
-            
           </Box>
         </Box>
         <Button
@@ -450,8 +445,8 @@ const BidHistory = () => {
           </ListItemIcon>
           <ListItemText
             sx={{
-              fontSize: "1.5rem",
-              textTransform: "uppercase",
+              fontSize: '1.5rem',
+              textTransform: 'uppercase',
               fontWeight: 700,
             }}
             primary="Bid History"
@@ -463,20 +458,16 @@ const BidHistory = () => {
           <Box
             sx={{
               minHeight: 300,
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
             <QueryBuilder />
-            <Typography variant="body1">
-              No events have been recorded yet
-            </Typography>
-            <Typography variant="body1">
-              Check back later to see the latest bids
-            </Typography>
+            <Typography variant="body1">No events have been recorded yet</Typography>
+            <Typography variant="body1">Check back later to see the latest bids</Typography>
           </Box>
         </Collapse>
       </List>
@@ -506,8 +497,8 @@ const Other = () => {
           </ListItemIcon>
           <ListItemText
             sx={{
-              fontSize: "1.5rem",
-              textTransform: "uppercase",
+              fontSize: '1.5rem',
+              textTransform: 'uppercase',
               fontWeight: 700,
             }}
             primary="Other"
@@ -519,18 +510,17 @@ const Other = () => {
           <Box
             sx={{
               minHeight: 300,
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
             <Typography variant="body1">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-              ullam temporibus tempora soluta debitis voluptates explicabo.
-              Quaerat, minima numquam quia quas dolorem deleniti, quod porro eum
-              perspiciatis voluptates tempora. Reprehenderit!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ullam temporibus tempora soluta debitis
+              voluptates explicabo. Quaerat, minima numquam quia quas dolorem deleniti, quod porro eum perspiciatis
+              voluptates tempora. Reprehenderit!
             </Typography>
           </Box>
         </Collapse>
@@ -541,9 +531,7 @@ const Other = () => {
 
 const AuctionDetail = () => {
   const { currAuction } = useSelector((state) => state.auction);
-  const { nftList, marketplaceContract, isLoading } = useSelector(
-    (state) => state.solidity
-  );
+  const { nftList, marketplaceContract, isLoading } = useSelector((state) => state.solidity);
   const { nft_id } = useParams();
 
   const nft = nftList.filter((nft) => nft.id == nft_id)[0];
@@ -552,24 +540,41 @@ const AuctionDetail = () => {
   let dateDisplay;
   let timeout = false;
   if (currAuction && nft) {
-    console.log(nft)
+    console.log(nft);
     currAuction.nft = nft;
-    items.push({ name: "img1", img: currAuction.img1_url });
+    items.push({ name: 'img1', img: currAuction.img1_url });
     items.push({
-      name: "nft image",
-      img: `data:image/png;base64,${toBase64(
-        currAuction.nft.image.buffer.data
-      )}`,
+      name: 'nft image',
+      img: `data:image/png;base64,${toBase64(currAuction.nft.image.buffer.data)}`,
     }); //2022-12-08 15:00:00
-    const endAt = new Date(nft.endAt*1000)
-    let tempDate = endAt.getDate() < 10 ? '0'+endAt.getDate() : endAt.getDate();
-    let tempHour = endAt.getHours() < 10 ? '0'+endAt.getHours() : endAt.getHours();
-    let tempMin = endAt.getMinutes() < 10 ? '0'+endAt.getMinutes() : endAt.getMinutes();
+    const endAt = new Date(nft.endAt * 1000);
+    let tempDate = endAt.getDate() < 10 ? '0' + endAt.getDate() : endAt.getDate();
+    let tempHour = endAt.getHours() < 10 ? '0' + endAt.getHours() : endAt.getHours();
+    let tempMin = endAt.getMinutes() < 10 ? '0' + endAt.getMinutes() : endAt.getMinutes();
 
-    date=endAt.getFullYear()+'-'+Number(endAt.getMonth()+1)+'-'+tempDate+' '+tempHour+':'+tempMin+':00'
+    date =
+      endAt.getFullYear() +
+      '-' +
+      Number(endAt.getMonth() + 1) +
+      '-' +
+      tempDate +
+      ' ' +
+      tempHour +
+      ':' +
+      tempMin +
+      ':00';
 
-    dateDisplay=endAt.getDate()+ '/'+ Number(endAt.getMonth()+1)+ '/'+ endAt.getFullYear()+ ', ' + tempHour+':'+tempMin
-    if(endAt < Date.now()) timeout = true;
+    dateDisplay =
+      endAt.getDate() +
+      '/' +
+      Number(endAt.getMonth() + 1) +
+      '/' +
+      endAt.getFullYear() +
+      ', ' +
+      tempHour +
+      ':' +
+      tempMin;
+    if (endAt < Date.now()) timeout = true;
   }
 
   const endAuc = async () => {
@@ -577,13 +582,12 @@ const AuctionDetail = () => {
       console.log(1);
       await (await marketplaceContract.endAuction(nft.id)).wait();
     }
-    await api.doneAuction(currAuction.nft_id)
-    window.location.reload()
+    await api.doneAuction(currAuction.nft_id);
+    window.location.reload();
   };
 
   const dispatch = useDispatch();
   useEffect(() => {
-    
     dispatch(getAuctionById(nft_id));
   }, [nft_id]);
 
