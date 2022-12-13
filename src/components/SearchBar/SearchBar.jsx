@@ -63,6 +63,8 @@ export default function MySearch() {
     const searchValue = e.target.value;
     if (!searchValue.startsWith(' ')) {
       setInputValue(searchValue);
+    } else {
+      setInputValue('@all');
     }
   };
 
@@ -70,7 +72,15 @@ export default function MySearch() {
     if (debounced != '') {
       history.push(`/admin/search/${debounced}`);
     } else {
-      return;
+      if (debounced == '') {
+        const linkURL = window.location.href.split('/');
+        let lastLink = linkURL[linkURL.length - 1];
+        if (lastLink != 'list_nft' && lastLink != 'campaign' && lastLink != 'list_auction') {
+          history.push(`/admin/search/@all`);
+        } else {
+          return;
+        }
+      }
     }
   }, [debounced]);
   return (

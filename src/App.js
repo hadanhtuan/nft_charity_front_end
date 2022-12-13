@@ -26,12 +26,13 @@ import { Box, CssBaseline, Typography, Button, CircularProgress, Container } fro
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import MyAppBar from './components/appbar/AppBar';
 import { fetchHistoryTrans } from './actions/transHistory';
+import { getCamp } from './actions/campaign';
 
 function App() {
   const dispatch = useDispatch();
   let accounts;
   dispatch(fetchHistoryTrans());
-
+  dispatch(getCamp());
   const web3Handler = async () => {
     // connect metamask
     accounts = await window.ethereum.request({

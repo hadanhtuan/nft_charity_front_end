@@ -47,7 +47,6 @@ function Chart() {
   const [days, setDays] = useState(30);
   const [flag, setFlag] = useState(false);
   const historyTrans = useSelector((state) => state.transHistory.historyTrans);
-
   console.log(historyTrans);
 
   const classes = useStyles();
