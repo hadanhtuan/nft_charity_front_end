@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import admin_home from './pages/admin/admin_home';
-import campaign from './pages/admin/campaign';
-import auction from './pages/admin/auction';
-import list_nft from './pages/admin/list_nft';
-import list_auction from './pages/admin/list_auction';
-import auction_detail from './pages/admin/auction_detail';
+import admin_home from "./pages/admin/admin_home";
+import campaign from "./pages/admin/campaign";
+import auction from "./pages/admin/auction";
+import list_nft from "./pages/admin/list_nft";
+import list_auction from "./pages/admin/list_auction";
+import auction_detail from "./pages/admin/auction_detail/AuctionDetail";
 
 import { ethers } from 'ethers';
 import Web3 from 'web3';

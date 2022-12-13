@@ -39,21 +39,27 @@ export const fetchSolidity = (accounts) => async (dispatch) => {
     const startPrice = ethers.utils.formatEther(thisNft.startPrice);
     // console.log(item.highestBidder)
     // Add item to items array
-    items.push({
-      startPrice,
-      id: item.itemId.toNumber(),
-      seller: item.seller,
-      name: metadata.name,
-      description: metadata.description,
-      image: metadata.image,
-      isSold: item.isSold,
-      isStarted: item.isStarted,
-      endAt: item.endAt.toNumber(),
-      highestBid: Number(fromWei(item.highestBid.toString())),
-      highestBidder: item.highestBidder,
-    });
+    const owner = await nft.ownerOf(item.tokenId);
+    const serverOwn =
+      owner === "0x3E939E620C5782e49C9E31198C823820e86948fF" ? true : false;
+      items.push({
+        startPrice,
+        id: item.itemId.toNumber(),
+        tokenId: item.tokenId.toNumber(),
+        creator: item.creator,
+        owner,
+        serverOwn,
+        name: metadata.name,
+        description: metadata.description,
+        image: metadata.image,
+        isSold: item.isSold,
+        isStarted: item.isStarted,
+        endAt: item.endAt.toNumber(),
+        highestBid: Number(fromWei(item.highestBid.toString())),
+        highestBidder: item.highestBidder,
+      });
   }
-
+  console.log(items);
   dispatch({
     type: FETCH_SOLIDITY,
     payload: {

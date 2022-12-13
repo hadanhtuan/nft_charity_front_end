@@ -23,9 +23,8 @@ import "./styles.scss";
 
 const defaultData = {
   title: "",
-  desc: "",
+  description: "",
   img1_url: "",
-  img2_url: "",
   zone: "",
 };
 
@@ -42,7 +41,7 @@ export default function Form() {
   const handlePost = async (e) => {
     e.preventDefault();
     formData.img1_url = await uploadImg(formData.img1_url);
-    formData.img2_url = await uploadImg(formData.img2_url);
+    // formData.img2_url = await uploadImg(formData.img2_url);
 
     if (currentCamp) {
       dispatch(editCamp(formData, currentId));
@@ -86,10 +85,10 @@ export default function Form() {
           margin="normal"
         />
         <TextField
-          name="desc"
+          name="description"
           variant="outlined"
           label="Description"
-          value={formData.desc}
+          value={formData.description}
           fullWidth
           onChange={(e) => {
             setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -108,7 +107,7 @@ export default function Form() {
             }
           />
         </Box>
-        <Box className="uploadImg_container">
+        {/* <Box className="uploadImg_container">
           <FileBase
             className="uploadImg"
             type="file"
@@ -117,7 +116,7 @@ export default function Form() {
               setFormData({ ...formData, img2_url: base64 })
             }
           />
-        </Box>
+        </Box> */}
 
         <TextField
           name="zone"

@@ -18,3 +18,4 @@ export const getCamp = () => API.get('/api/camp');
 export const getAuction = () => API.get('/api/auction');
 export const createAuction = (auc) => API.post('/api/auction', auc);
 export const getAuctionById = (id) => API.get(`/api/auction/${id}`);
+export const doneAuction = (id) => API.put(`/api/auction/${id}`);

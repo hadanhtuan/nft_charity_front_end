@@ -41,16 +41,20 @@ export default function List_NFT() {
             <CircularProgress />
           </Box>
         ) : (
-          nftList.map((item, id) => (
-            <MyNFTInfo
-              key={id}
-              id={item.id}
-              image={item.image}
-              name={item.name}
-              description={item.description}
-              price={item.startPrice}
-            />
-          ))
+          nftList.map((item, id) => {
+            if (item.serverOwn) {
+              return (
+                <MyNFTInfo
+                  key={id}
+                  id={item.id}
+                  image={item.image}
+                  name={item.name}
+                  description={item.description}
+                  price={item.startPrice}
+                />
+              );
+            }
+          })
         )}
       </Box>
     </Box>

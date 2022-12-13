@@ -17,6 +17,8 @@ import MyTableCampaign from "../../../components/TableAuction/TableCamp";
 import MyTableNFT from "../../../components/TableAuction/TableNFT";
 import { useSelector, useDispatch } from "react-redux";
 import { createAuction, getAllAuction } from "../../../actions/auction";
+import { getCamp } from "../../../actions/campaign";
+
 import "./styles.scss";
 const defaultData = { startPrice: 0.0001, endAt: 1 };
 export default function Index() {
@@ -31,7 +33,9 @@ export default function Index() {
   const dispatch = useDispatch();
   const { auctions } = useSelector((state) => state.auction);
   useEffect(() => {
+    dispatch(getCamp())
     dispatch(getAllAuction());
+
   }, []);
   const handleClickOpen = () => {
     if (ids.campId && ids.nftId) {
