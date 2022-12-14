@@ -19,14 +19,6 @@ export default function List_NFT() {
       <Typography className="pages_title" variant="h5">
         Manage NFT
       </Typography>
-      <Box className="listNFT_container">
-        <Box className="container_left">
-          <MySearch />
-        </Box>
-        <Button color="secondary" variant="contained" startIcon={<TuneIcon />}>
-          Filter
-        </Button>
-      </Box>
 
       <Box className="nft_list">
         {isLoading ? (

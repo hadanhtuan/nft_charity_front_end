@@ -87,7 +87,6 @@ function App() {
                 <Route path="/admin/list_nft" exact component={list_nft} />
                 <Route path="/admin/list_auction" exact component={list_auction} />
                 <Route path="/admin/list_auction/:nft_id" exact component={auction_detail} />
-                <Route path="/admin/search/:searchInput" exact component={SearchBox} />
               </Switch>
             </Container>
           </Box>

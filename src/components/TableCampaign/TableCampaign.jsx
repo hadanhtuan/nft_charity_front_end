@@ -62,9 +62,6 @@ export default function MyTableCampaign() {
             >
               <EditIcon />
             </IconButton>
-            <IconButton aria-label="delete" component="label">
-              <DeleteOutlinedIcon />
-            </IconButton>
           </Box>
         );
       },
