@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Box, IconButton, Typography, CircularProgress } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -90,6 +90,7 @@ export default function MyTableCampaign() {
           experimentalFeatures={{ newEditingApi: true }}
           components={{
             Footer: () => null,
+            Toolbar: GridToolbar,
           }}
         />
       </Box>

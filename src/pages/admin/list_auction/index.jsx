@@ -1,27 +1,20 @@
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  CssBaseline,
-  Typography,
-  Button,
-  IconButton,
-  CircularProgress,
-  Card,
-} from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import MyAppBar from "../../../components/appbar/AppBar";
-import MySearch from "../../../components/SearchBar/SearchBar";
-import TuneIcon from "@mui/icons-material/Tune";
-import { DataGrid } from "@mui/x-data-grid";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { Box, CssBaseline, Typography, Button, IconButton, CircularProgress, Card } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2/Grid2';
+import MyAppBar from '../../../components/appbar/AppBar';
+import MySearch from '../../../components/SearchBar/SearchBar';
+import TuneIcon from '@mui/icons-material/Tune';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
-import MyTableCampaign from "../../../components/TableCampaign/TableCampaign";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { EDIT_CAMP, PICK_CAMP } from "../../../constraint/actionTypes";
-import { getAllAuction } from "../../../actions/auction";
-import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+
+import MyTableCampaign from '../../../components/TableCampaign/TableCampaign';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { EDIT_CAMP, PICK_CAMP } from '../../../constraint/actionTypes';
+import { getAllAuction } from '../../../actions/auction';
+import { useHistory } from 'react-router-dom';
 
 const List_Auc = () => {
   const dispatch = useDispatch();
@@ -34,38 +27,38 @@ const List_Auc = () => {
   }, []);
   const columns = [
     {
-      field: "nft_id",
-      headerName: "NFT",
+      field: 'nft_id',
+      headerName: 'NFT',
       editable: true,
       width: 20,
     },
     {
-      field: "campaign_id",
-      headerName: "Campaign ID",
+      field: 'campaign_id',
+      headerName: 'Campaign ID',
       editable: true,
       width: 100,
     },
     {
-      field: "title",
-      headerName: "Title",
+      field: 'title',
+      headerName: 'Title',
       editable: true,
       width: 300,
     },
     {
-      field: "status",
-      headerName: "Status",
+      field: 'status',
+      headerName: 'Status',
       editable: true,
       width: 100,
     },
     {
-      field: "created_at",
-      headerName: "Create At",
+      field: 'created_at',
+      headerName: 'Create At',
       editable: true,
       width: 120,
     },
     {
-      field: "img1_url",
-      headerName: "Image",
+      field: 'img1_url',
+      headerName: 'Image',
       width: 250,
       renderCell: (params) => {
         return (
@@ -76,14 +69,14 @@ const List_Auc = () => {
       },
     },
     {
-      field: "zone",
-      headerName: "Zone",
+      field: 'zone',
+      headerName: 'Zone',
       editable: true,
       width: 100,
     },
     {
-      field: "icon",
-      headerName: "Icon",
+      field: 'icon',
+      headerName: 'Icon',
       renderCell: (params) => {
         return (
           <Box sx={{ display: `flex`, gap: `10px` }}>
@@ -110,7 +103,7 @@ const List_Auc = () => {
       <Box className="homepages">
         <Typography className="pages_title">Active Campaign</Typography>
 
-        <Box sx={{ display: "flex", gap: "12px" }}>
+        <Box sx={{ display: 'flex', gap: '12px' }}>
           <MySearch />
           <Button variant="contained" startIcon={<TuneIcon />}>
             Filter
@@ -119,7 +112,7 @@ const List_Auc = () => {
 
         <Box>
           {isLoading ? (
-            <Box sx={{ display: "flex", gap: "12px", alignItems: "center" }}>
+            <Box sx={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
               <Typography variant="h6">Loading...</Typography>
               <CircularProgress />
             </Box>
@@ -129,7 +122,7 @@ const List_Auc = () => {
                 padding: `20px`,
                 display: `flex`,
                 height: `600px`,
-                width: "100%",
+                width: '100%',
               }}
             >
               {/* Header */}
@@ -142,6 +135,9 @@ const List_Auc = () => {
                 checkboxSelection
                 disableSelectionOnClick
                 experimentalFeatures={{ newEditingApi: true }}
+                components={{
+                  Toolbar: GridToolbar,
+                }}
               />
             </Card>
           )}
