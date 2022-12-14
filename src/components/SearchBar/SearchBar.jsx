@@ -75,8 +75,8 @@ export default function MySearch() {
       if (debounced == '') {
         const linkURL = window.location.href.split('/');
         let lastLink = linkURL[linkURL.length - 1];
-        if (lastLink != 'list_nft' && lastLink != 'campaign' && lastLink != 'list_auction' && lastLink != '') {
-          history.push(`/admin/search/${lastLink}`);
+        if (lastLink != 'list_nft' && lastLink != 'campaign' && lastLink != 'list_auction' && debounced == '') {
+          history.push(`/admin/search/@all`);
         }
         return;
       }
