@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { Box, CssBaseline, Typography, Button } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import React, { useState, useEffect } from 'react';
+import { Box, CssBaseline, Typography, Button } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2/Grid2';
 
-import MySearch from "../../../components/SearchBar/SearchBar";
-import TuneIcon from "@mui/icons-material/Tune";
+import MySearch from '../../../components/SearchBar/SearchBar';
+import TuneIcon from '@mui/icons-material/Tune';
 
-import MyTableCampaign from "../../../components/TableCampaign/TableCampaign";
-import FormCampaign from "../../../components/FormCampaign/Form";
-import { getCamp } from "../../../actions/campaign";
-import { useDispatch, useSelector } from "react-redux";
-import "./styles.scss";
+import MyTableCampaign from '../../../components/TableCampaign/TableCampaign';
+import FormCampaign from '../../../components/FormCampaign/Form';
+import { getCamp } from '../../../actions/campaign';
+import { useDispatch, useSelector } from 'react-redux';
+import './styles.scss';
 
 export default function Campaign() {
   const dispatch = useDispatch();
@@ -25,16 +25,6 @@ export default function Campaign() {
       {/* toolbar box to search or filter somthing */}
       <Box className="homepages__container">
         <Typography className="pages_title">Active Campaign</Typography>
-        <Box className="container_left">
-          <MySearch />
-          <Button
-            color="secondary"
-            variant="contained"
-            startIcon={<TuneIcon />}
-          >
-            Filter
-          </Button>
-        </Box>
       </Box>
 
       {/* an box to contain the body */}

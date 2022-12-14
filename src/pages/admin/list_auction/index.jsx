@@ -103,13 +103,6 @@ const List_Auc = () => {
       <Box className="homepages">
         <Typography className="pages_title">Active Campaign</Typography>
 
-        <Box sx={{ display: 'flex', gap: '12px' }}>
-          <MySearch />
-          <Button variant="contained" startIcon={<TuneIcon />}>
-            Filter
-          </Button>
-        </Box>
-
         <Box>
           {isLoading ? (
             <Box sx={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
