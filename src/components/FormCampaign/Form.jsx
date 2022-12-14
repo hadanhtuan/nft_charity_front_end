@@ -1,43 +1,59 @@
-import React, { useState, useEffect } from "react";
-import {
-  Card,
-  Box,
-  Typography,
-  Divider,
-  TextField,
-  Button,
-  ButtonBase,
-} from "@mui/material";
+import React, { useState, useEffect } from 'react';
+import { Card, Box, Typography, Divider, TextField, Button, ButtonBase } from '@mui/material';
 // import date
-import MyDatePicker from "../DatePicker/DatePicker";
-import FileBase from "react-file-base64";
-import TuneIcon from "@mui/icons-material/Tune";
-import uploadImg from "../../utils/UploadImgToCloud";
-import * as api from "../../apis";
-import { useSelector, useDispatch } from "react-redux";
-import { CurrencyYuanOutlined } from "@mui/icons-material";
-import { createCamp, editCamp } from "../../actions/campaign";
-import { PICK_CAMP } from "../../constraint/actionTypes";
-
-import "./styles.scss";
+import MyDatePicker from '../DatePicker/DatePicker';
+import FileBase from 'react-file-base64';
+import TuneIcon from '@mui/icons-material/Tune';
+import uploadImg from '../../utils/UploadImgToCloud';
+import * as api from '../../apis';
+import { useSelector, useDispatch } from 'react-redux';
+import { CurrencyYuanOutlined } from '@mui/icons-material';
+import { createCamp, editCamp } from '../../actions/campaign';
+import { PICK_CAMP } from '../../constraint/actionTypes';
+import Stack from '@mui/material/Stack';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import Slide from '@mui/material/Slide';
+import './styles.scss';
 
 const defaultData = {
-  title: "",
-  description: "",
-  img1_url: "",
-  zone: "",
+  title: '',
+  description: '',
+  img1_url: '',
+  zone: '',
 };
+
+// declare alert component
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+// declare transition component
+function TransitionRight(props) {
+  return <Slide {...props} direction="left" />;
+}
 
 export default function Form() {
   const [formData, setFormData] = useState(defaultData);
+  // this state is use for show noti when create or edit campaign success
+  const [openNoti, setOpenNoti] = useState(false);
+
   const currentId = useSelector((state) => state.campaign.currentId);
   const currentCamp = useSelector((state) =>
-    currentId
-      ? state.campaign.campaigns.find((camp) => camp.id == currentId)
-      : null
+    currentId ? state.campaign.campaigns.find((camp) => camp.id == currentId) : null,
   );
 
   const dispatch = useDispatch();
+
+  // this function is use for set openNoti to false
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenNoti(false);
+  };
+
+  // this function is use for handle create campaign
   const handlePost = async (e) => {
     e.preventDefault();
     formData.img1_url = await uploadImg(formData.img1_url);
@@ -51,6 +67,9 @@ export default function Form() {
 
     // const res = api.createCamp(formData);
     setFormData(defaultData);
+
+    // handle after upload
+    setOpenNoti(true);
   };
 
   useEffect(() => {
@@ -68,7 +87,7 @@ export default function Form() {
           <Box className="editCampaign_title">
             <TuneIcon />
             <Typography variant="h6" fontWeight={700}>
-              {currentCamp ? "Edit Campaign" : "New Campaign"}
+              {currentCamp ? 'Edit Campaign' : 'New Campaign'}
             </Typography>
           </Box>
           <Divider />
@@ -102,9 +121,7 @@ export default function Form() {
             className="uploadImg"
             type="file"
             multiple={false}
-            onDone={({ base64 }) =>
-              setFormData({ ...formData, img1_url: base64 })
-            }
+            onDone={({ base64 }) => setFormData({ ...formData, img1_url: base64 })}
           />
         </Box>
         {/* <Box className="uploadImg_container">
@@ -135,7 +152,7 @@ export default function Form() {
           size="large"
           type="submit"
           onClick={handlePost}
-          sx={{ marginBottom: "8px" }}
+          sx={{ marginBottom: '8px' }}
         >
           Submit
         </Button>
@@ -145,7 +162,7 @@ export default function Form() {
             size="large"
             type="submit"
             onClick={() => {
-              dispatch({ type: PICK_CAMP, payload: "" });
+              dispatch({ type: PICK_CAMP, payload: '' });
               setFormData(defaultData);
             }}
           >
@@ -153,6 +170,24 @@ export default function Form() {
           </Button>
         )}
       </Box>
+
+      <Stack spacing={2} sx={{ width: '100%' }}>
+        <Snackbar
+          open={openNoti}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          key={'top' + 'right'}
+          TransitionComponent={TransitionRight}
+        >
+          <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+            This is a success message!
+          </Alert>
+        </Snackbar>
+      </Stack>
     </Card>
   );
 }

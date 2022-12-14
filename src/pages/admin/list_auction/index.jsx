@@ -15,7 +15,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { EDIT_CAMP, PICK_CAMP } from '../../../constraint/actionTypes';
 import { getAllAuction } from '../../../actions/auction';
 import { useHistory } from 'react-router-dom';
-
+import { AiOutlineEye } from 'react-icons/ai';
 const List_Auc = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -39,12 +39,39 @@ const List_Auc = () => {
     {
       field: 'title',
       headerName: 'Title',
-      width: 300,
+      width: 250,
     },
     {
       field: 'status',
       headerName: 'Status',
       width: 100,
+      renderCell: (params) => {
+        return (
+          <Box
+            sx={{
+              display: `flex`,
+              justifyContent: `center`,
+              alignItems: `center`,
+              gap: `10px`,
+            }}
+          >
+            <Typography
+              sx={{
+                fontWeight: 600,
+                color: `${
+                  params.row.status === 'Available'
+                    ? `
+                    #00F5FF
+                `
+                    : `rgb(0, 221, 162)`
+                }`,
+              }}
+            >
+              {params.row.status}
+            </Typography>
+          </Box>
+        );
+      },
     },
     {
       field: 'created_at',
@@ -71,7 +98,7 @@ const List_Auc = () => {
     },
     {
       field: 'icon',
-      headerName: 'Icon',
+      headerName: 'Options',
       renderCell: (params) => {
         return (
           <Box sx={{ display: `flex`, gap: `10px` }}>
@@ -82,7 +109,7 @@ const List_Auc = () => {
                 history.push(`/admin/list_auction/${params.row.nft_id}`);
               }}
             >
-              <EditIcon />
+              <AiOutlineEye />
             </IconButton>
           </Box>
         );
