@@ -29,31 +29,26 @@ const List_Auc = () => {
     {
       field: 'nft_id',
       headerName: 'NFT',
-      editable: true,
       width: 20,
     },
     {
       field: 'campaign_id',
       headerName: 'Campaign ID',
-      editable: true,
       width: 100,
     },
     {
       field: 'title',
       headerName: 'Title',
-      editable: true,
       width: 300,
     },
     {
       field: 'status',
       headerName: 'Status',
-      editable: true,
       width: 100,
     },
     {
       field: 'created_at',
       headerName: 'Create At',
-      editable: true,
       width: 120,
     },
     {
@@ -89,9 +84,6 @@ const List_Auc = () => {
             >
               <EditIcon />
             </IconButton>
-            <IconButton aria-label="delete" component="label">
-              <DeleteOutlinedIcon />
-            </IconButton>
           </Box>
         );
       },
@@ -125,7 +117,6 @@ const List_Auc = () => {
                 rowHeight={150}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
-                checkboxSelection
                 disableSelectionOnClick
                 experimentalFeatures={{ newEditingApi: true }}
                 components={{
