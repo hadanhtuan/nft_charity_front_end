@@ -28,7 +28,7 @@ export default function Index() {
         </Box>
         {/* <MyTransactionOverview /> */}
         <Chart />
-        <Box className="recentAct">
+        <Box className="recentAct" p={2}>
           {/* <MyRecentAct /> */}
           <TableTransaction />
         </Box>

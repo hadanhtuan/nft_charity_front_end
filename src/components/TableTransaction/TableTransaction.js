@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import Pagination from '@material-ui/lab/Pagination';
 import {
   Container,
   createTheme,
@@ -19,6 +18,7 @@ import {
 import { fromWei } from '../../utils';
 import { ADDRESS_WALLET } from '../../apis/getHistoryTrans';
 import { useSelector } from 'react-redux';
+import { Pagination } from '@mui/material';
 
 export default function TableTransaction() {
   const [historyTrans, setHistoryTrans] = useState();
@@ -26,6 +26,7 @@ export default function TableTransaction() {
   const [page, setPage] = useState(1);
 
   const trans = useSelector((state) => state.transHistory.historyTrans);
+
   console.log('transaction:', trans);
   const useStyles = makeStyles({
     row: {
