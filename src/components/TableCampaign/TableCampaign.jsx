@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from "react";
-import {
-  Card,
-  Box,
-  IconButton,
-  Typography,
-  CircularProgress,
-} from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import * as api from "../../apis";
-import { useDispatch, useSelector } from "react-redux";
-import { EDIT_CAMP, PICK_CAMP } from "../../constraint/actionTypes";
+import React, { useState, useEffect } from 'react';
+import { Card, Box, IconButton, Typography, CircularProgress } from '@mui/material';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import * as api from '../../apis';
+import { useDispatch, useSelector } from 'react-redux';
+import { EDIT_CAMP, PICK_CAMP } from '../../constraint/actionTypes';
 
-import "./styles.scss";
+import './styles.scss';
 
 export default function MyTableCampaign() {
   const { campaigns, isLoading } = useSelector((state) => state.campaign); //lay campaigns tu store
@@ -23,23 +17,23 @@ export default function MyTableCampaign() {
 
   const columns = [
     {
-      field: "id",
-      headerName: "ID",
+      field: 'id',
+      headerName: 'ID',
       width: 50,
     },
     {
-      field: "title",
-      headerName: "Campaign",
+      field: 'title',
+      headerName: 'Campaign',
       width: 150,
     },
     {
-      field: "description",
-      headerName: "Description",
+      field: 'description',
+      headerName: 'Description',
       width: 150,
     },
     {
-      field: "img1_url",
-      headerName: "Image",
+      field: 'img1_url',
+      headerName: 'Image',
       width: 250,
       renderCell: (params) => {
         return (
@@ -50,12 +44,12 @@ export default function MyTableCampaign() {
       },
     },
     {
-      field: "zone",
-      headerName: "Zone",
+      field: 'zone',
+      headerName: 'Zone',
     },
     {
-      field: "icon",
-      headerName: "Icon",
+      field: 'icon',
+      headerName: 'Icon',
       renderCell: (params) => {
         return (
           <Box sx={{ display: `flex`, gap: `10px` }}>
@@ -68,16 +62,13 @@ export default function MyTableCampaign() {
             >
               <EditIcon />
             </IconButton>
-            <IconButton aria-label="delete" component="label">
-              <DeleteOutlinedIcon />
-            </IconButton>
           </Box>
         );
       },
     },
   ];
   return isLoading ? (
-    <Box sx={{ display: "flex", gap: 1 }}>
+    <Box sx={{ display: 'flex', gap: 1 }}>
       <Typography variant="h6" gutterBottom>
         Waiting...
       </Typography>
@@ -96,6 +87,7 @@ export default function MyTableCampaign() {
           experimentalFeatures={{ newEditingApi: true }}
           components={{
             Footer: () => null,
+            Toolbar: GridToolbar,
           }}
         />
       </Box>

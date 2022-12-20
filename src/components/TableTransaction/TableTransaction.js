@@ -26,8 +26,6 @@ export default function TableTransaction() {
   const [page, setPage] = useState(1);
 
   const trans = useSelector((state) => state.transHistory.historyTrans);
-
-  console.log('transaction:', trans);
   const useStyles = makeStyles({
     row: {
       backgroundColor: '#16171a',
@@ -102,7 +100,6 @@ export default function TableTransaction() {
                 {handleData()
                   .slice((page - 1) * 10, (page - 1) * 10 + 10)
                   .map((row, index) => {
-                    console.log(handleData());
                     return (
                       <TableRow onClick={() => console.log(row.id)} className={classes.row} key={row.name}>
                         <TableCell
@@ -170,7 +167,7 @@ export default function TableTransaction() {
           )}
         </TableContainer>
 
-        {/* Comes from @material-ui/lab */}
+        {/* Comes from @mui/material */}
         <Pagination
           count={(handleData()?.length / 10).toFixed(0)}
           style={{

@@ -43,10 +43,10 @@ export const fetchSolidity = (accounts) => async (dispatch) => {
     const serverOwn =
       owner === "0x3E939E620C5782e49C9E31198C823820e86948fF" ? true : false;
       items.push({
-        startPrice,
-        id: item.itemId.toNumber(),
-        tokenId: item.tokenId.toNumber(),
-        creator: item.creator,
+        startPrice,                        
+        id: item.itemId.toNumber(),                           
+        tokenId: item.tokenId.toNumber(),                
+        creator: item.creator,                              
         owner,
         serverOwn,
         name: metadata.name,
@@ -59,7 +59,6 @@ export const fetchSolidity = (accounts) => async (dispatch) => {
         highestBidder: item.highestBidder,
       });
   }
-  console.log(items);
   dispatch({
     type: FETCH_SOLIDITY,
     payload: {

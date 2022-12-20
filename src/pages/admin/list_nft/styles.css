@@ -1,0 +1,26 @@
+.nft_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.homepages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pages_title {
+  font-weight: 700 !important;
+  text-transform: uppercase;
+}
+
+.listNFT_container {
+  display: flex;
+  gap: 15px;
+}
+.nft_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}/*# sourceMappingURL=styles.css.map */

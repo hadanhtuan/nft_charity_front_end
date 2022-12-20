@@ -1,0 +1,14 @@
+.homepages .homepages__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.homepages .homepages__container .container_left {
+  display: flex;
+  align-items: center;
+}
+.homepages .campaign_data {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}/*# sourceMappingURL=styles.css.map */

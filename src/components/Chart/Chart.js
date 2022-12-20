@@ -47,6 +47,7 @@ function Chart() {
   const [days, setDays] = useState(30);
   const [flag, setFlag] = useState(false);
   const historyTrans = useSelector((state) => state.transHistory.historyTrans);
+  console.log(historyTrans);
 
   const classes = useStyles();
 
@@ -64,9 +65,11 @@ function Chart() {
   };
 
   useEffect(() => {
-    setHistoryData(fetchHistoryData());
+    const data = fetchHistoryData();
+    console.log(data);
+    setHistoryData(data);
     setFlag(true);
-  }, [days, historyData]);
+  }, [days, historyTrans]);
 
   const darkTheme = createTheme({
     palette: {

@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import admin_home from "./pages/admin/admin_home";
-import campaign from "./pages/admin/campaign";
-import auction from "./pages/admin/auction";
-import list_nft from "./pages/admin/list_nft";
-import list_auction from "./pages/admin/list_auction";
-import auction_detail from "./pages/admin/auction_detail/AuctionDetail";
+import admin_home from './pages/admin/admin_home';
+import campaign from './pages/admin/campaign';
+import auction from './pages/admin/auction';
+import list_nft from './pages/admin/list_nft';
+import list_auction from './pages/admin/list_auction';
+import auction_detail from './pages/admin/auction_detail/AuctionDetail';
+import SearchBox from './pages/admin/search/SearchBox';
 
 import { ethers } from 'ethers';
 import Web3 from 'web3';
@@ -25,12 +26,13 @@ import { Box, CssBaseline, Typography, Button, CircularProgress, Container } fro
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import MyAppBar from './components/appbar/AppBar';
 import { fetchHistoryTrans } from './actions/transHistory';
+import { getCamp } from './actions/campaign';
 
 function App() {
   const dispatch = useDispatch();
   let accounts;
   dispatch(fetchHistoryTrans());
-
+  dispatch(getCamp());
   const web3Handler = async () => {
     // connect metamask
     accounts = await window.ethereum.request({

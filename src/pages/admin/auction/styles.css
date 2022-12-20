@@ -1,0 +1,19 @@
+.page_content {
+  height: 100%;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.toolbar_left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}/*# sourceMappingURL=styles.css.map */
