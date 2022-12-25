@@ -162,14 +162,7 @@ export default function MySidebar() {
                   </ListItemButton>
                 </ListItem>
 
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <SettingsIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Settings" />
-                  </ListItemButton>
-                </ListItem>
+              
               </React.Fragment>
             }
           </List>
