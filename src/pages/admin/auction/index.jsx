@@ -24,6 +24,7 @@ import {UPDATE_END_AT} from '../../../constraint/actionTypes'
 
 import './styles.scss';
 const defaultData = { startPrice: 0.0001, endAt: 1 };
+
 export default function Index() {
   const [ids, setIds] = useState({ campId: '', nftId: '' });
   const [open, setOpen] = useState(false);

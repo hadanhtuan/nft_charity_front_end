@@ -120,7 +120,7 @@ const List_Auc = () => {
   return (
     <>
       <Box className="homepages">
-        <Typography className="pages_title">Active Campaign</Typography>
+        <Typography className="pages_title">Active Auction</Typography>
 
         <Box>
           {isLoading ? (
@@ -142,8 +142,8 @@ const List_Auc = () => {
                 columns={columns}
                 rows={auctions}
                 rowHeight={150}
-                pageSize={5}
-                rowsPerPageOptions={[5]}
+                pageSize={4}
+                rowsPerPageOptions={[4]}
                 disableSelectionOnClick
                 experimentalFeatures={{ newEditingApi: true }}
                 components={{

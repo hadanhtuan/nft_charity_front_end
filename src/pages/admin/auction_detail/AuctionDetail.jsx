@@ -65,9 +65,8 @@ const StyledImgSlider = styled(Card)`
   .imgContainer {
     align-self: flex-end;
     width: 100%;
-    height: 420px;
+    height: 450px;
     overflow: hidden;
-    margin-bottom: 12px;
     img {
       width: 100%;
       height: 100%;

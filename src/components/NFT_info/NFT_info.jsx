@@ -8,9 +8,6 @@ function toBase64(arr) {
 }
 
 export default function MyNFTInfo({ id, image, name, description, price }) {
-  console.log(image);
-  console.log(id);
-  console.log(name);
 
   return (
     <Card className="MyNFTInfo">

@@ -29,7 +29,6 @@ export default function MySidebar() {
   const history = useHistory();
   const location = useLocation();
   const pathname = location.pathname.split('/')[2];
-  console.log(pathname);
 
   const backLink = {
     backgroundColor: 'rgb(0, 221, 162)',
@@ -39,35 +38,17 @@ export default function MySidebar() {
     },
   };
   return (
-    <Box className="sidebar" sx={{ display: `flex` }}>
-      <Drawer
-        className="drawer"
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            backgroundColor: 'transparent',
-            width: drawerWidth,
-            boxSizing: 'border-box',
-            border: 'none',
-          },
-        }}
-        variant="permanent"
-        anchor="left"
-      >
-        {/* this is a full box to contain any thing in sidebar */}
-
-        {/* start phan header */}
-        <Box className="drawer__header" sx={{ display: 'flex', height: '300px', margin: `0 auto` }}>
+   
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', color:'white'}}>
+        <Box sx={{  height: '100px', margin: `0 auto`, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Box
-            className="drawer__header__logo"
             sx={{
               display: `flex`,
               justifyContent: `center`,
               alignItems: `center`,
             }}
           >
-            <Box className="logo_img">
+            <Box>
               <img src={logo} alt="logo" style={{ width: 40, height: 40 }} />
             </Box>
             <Box className="logo_title">
@@ -87,7 +68,7 @@ export default function MySidebar() {
         </Box>
         <Divider />
         {/* end phan header */}
-        <Box className="body">
+        <Box className="body" sx={{width:'240px', marginBottom: '47px'}}>
           {/* start phan option */}
           <List className="listOptions">
             {
@@ -172,18 +153,18 @@ export default function MySidebar() {
 
         {/* start phan footer */}
         <Box
-          className="footer"
+          className="footer" 
           sx={{
             width: '100%',
             height: '100%',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            padding: '9px'
           }}
         >
           <MyBalance />
         </Box>
-      </Drawer>
-    </Box>
+        </Box>
   );
 }
